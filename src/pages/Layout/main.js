@@ -3,16 +3,20 @@ import NavigationBar from "./NavigationBar";
 import styled from "@emotion/styled";
 
 const Main = styled.main`
-  height: 100vh;
   background-color: transparent;
+`;
+
+const MainLayout = styled(Box)`
+  height: 95vh;
+  width: fit-content;
 `;
 
 export default function Layout(props) {
   const { children } = props;
   return (
-    <Box className="mainLayout">
+    <MainLayout>
       <NavigationBar />
       <Main>{children}</Main>
-    </Box>
+    </MainLayout>
   );
 }
