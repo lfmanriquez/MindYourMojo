@@ -6,17 +6,17 @@ export default function Values() {
     <Grid
       xs={12}
       container
-      spacing={6}
+      spacing={2}
       alignItems="center"
       justifyContent="center"
-      sx={{ padding: "5vh" }}
+      sx={{ height: "100%", padding: "5vh" }}
     >
-      <Grid item xs={12}>
+      <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2}>
-          <Grid item xs={12}>
+          <Grid item xs={12} zeroMinWidth>
             <Typography variant="h4">Personal Values List</Typography>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} zeroMinWidth>
             <Typography variant="body1">
               Here is a list of all the personal values that were used in the
               assessment. It was prepared based on our research in the field of
@@ -27,7 +27,7 @@ export default function Values() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} zeroMinWidth>
         <PersonalValueCards />
       </Grid>
     </Grid>

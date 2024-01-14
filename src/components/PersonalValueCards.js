@@ -1,16 +1,19 @@
-import { Card, CardContent, CardHeader, Grid } from "@mui/material";
+import { Card, CardContent, CardHeader, Fade, Grid } from "@mui/material";
 import personalValues from "../app-data/personal-values";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import DetailsDialog from "./DetailsDialog";
 
 const ValueCard = styled(Card)`
-  width: 270px;
-  height: 150px;
+  min-width: 35vw;
+  width: 100%;
+  height: 25vh;
+  max-height: 30vh;
+  margin: 1vh;
 
   &:hover {
     cursor: pointer;
-    scale: 1.05;
+    scale: 1.01;
     box-shadow: 0px 2px 1px -1px black, 0px 1px 1px 0px black,
       0px 1px 3px 0px black;
   }
@@ -32,20 +35,26 @@ export default function PersonalValueCards() {
       <Grid
         container
         xs={12}
-        spacing={2}
+        spacing={1}
         textAlign="center"
         alignItems="center"
         direction="row"
-        sx={{ width: "100%", height: "100%" }}
       >
-        {values.map((v) => (
+        {values.map((v, index) => (
           <>
-            <Grid item xs={3}>
-              <ValueCard key={v} onClick={() => handleOpenCard(v)}>
-                <CardHeader title={v.name}></CardHeader>
-                <CardContent>{v.exerpt}</CardContent>
-              </ValueCard>
-            </Grid>
+            <Fade
+              in={values.length > 0}
+              timeout={{ enter: 500, exit: 250 }}
+              style={{ transitionDelay: `${index * 100}ms` }}
+              key={`asi-${v.id}-${index}`}
+            >
+              <Grid item xs>
+                <ValueCard key={v} onClick={() => handleOpenCard(v)}>
+                  <CardHeader title={v.name}></CardHeader>
+                  <CardContent>{v.exerpt}</CardContent>
+                </ValueCard>
+              </Grid>
+            </Fade>
           </>
         ))}
         {isDetailsOpen && (

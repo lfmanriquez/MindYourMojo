@@ -7,8 +7,8 @@ const Main = styled.main`
 `;
 
 const MainLayout = styled(Box)`
-  height: 95vh;
-  width: fit-content;
+  height: 100%;
+  width: 100%;
 `;
 
 export default function Layout(props) {
