@@ -14,7 +14,7 @@ const CustomDialog = styled(Dialog)`
     max-width: 60vw;
     @media screen and (max-width: 500px) {
       max-width: 85vw;
-      max-height: 30vh;
+      max-height: 35vh;
     }
   }
 `;
