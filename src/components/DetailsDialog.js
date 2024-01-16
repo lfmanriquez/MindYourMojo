@@ -10,7 +10,12 @@ import {
 const CustomDialog = styled(Dialog)`
   backdrop-filter: blur(3px);
   .MuiDialog-paper {
-    max-width: 40vw;
+    max-height: 50vh;
+    max-width: 60vw;
+    @media screen and (max-width: 500px) {
+      max-width: 85vw;
+      max-height: 30vh;
+    }
   }
 `;
 

@@ -1,15 +1,17 @@
 import { Grid, Typography } from "@mui/material";
 import PersonalValueCards from "../../components/PersonalValueCards";
+import personalValues from "../../app-data/personal-values";
 
 export default function Values() {
+  const values = personalValues;
   return (
     <Grid
-      xs={12}
       container
-      spacing={2}
+      spacing={4}
+      textAlign="center"
       alignItems="center"
       justifyContent="center"
-      sx={{ height: "100%", padding: "5vh" }}
+      sx={{ height: "100%", padding: "10px" }}
     >
       <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2}>
@@ -28,7 +30,7 @@ export default function Values() {
         </Grid>
       </Grid>
       <Grid item xs={12} zeroMinWidth>
-        <PersonalValueCards />
+        <PersonalValueCards values={values} />
       </Grid>
     </Grid>
   );

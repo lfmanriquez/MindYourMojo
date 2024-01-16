@@ -3,8 +3,11 @@ import {
   AppBar,
   Box,
   Button,
+  Drawer,
   Grid,
   IconButton,
+  List,
+  ListItem,
   Menu,
   MenuItem,
   Stack,
@@ -61,7 +64,7 @@ export default function NavigationBar() {
 
   return (
     <NavBar>
-      <Grid container xs={12} alignItems="center">
+      <Grid container alignItems="center">
         <Grid
           item
           xs={4}
@@ -69,8 +72,12 @@ export default function NavigationBar() {
           sx={{ margin: " auto", paddingLeft: "1vh" }}
         >
           <Button sx={{ color: "black" }}>
-            <Typography variant="h6" onClick={() => handleRouteChange("/")}>
-              Know Your Mojo
+            <Typography
+              variant="h6"
+              onClick={() => handleRouteChange("/")}
+              noWrap
+            >
+              {process.env.REACT_APP_NAME}
             </Typography>
           </Button>
         </Grid>
@@ -86,39 +93,30 @@ export default function NavigationBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
+            <Drawer
+              anchor="right"
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", sm: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem
-                  key={page}
-                  onClick={() => handleRouteChange(page.route)}
-                >
-                  <Typography textAlign="center">{page.name}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+              <List>
+                {pages.map((page) => (
+                  <ListItem key={page.id}>
+                    <Button onClick={() => handleRouteChange(page.route)}>
+                      <Typography textAlign="center">{page.name}</Typography>
+                    </Button>
+                  </ListItem>
+                ))}
+              </List>
+            </Drawer>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
             <Stack direction="row">
               {pages.map((page) => (
                 <NavButton
-                  key={page}
+                  key={page.id}
                   onClick={() => handleRouteChange(page.route)}
                 >
                   {page.name}

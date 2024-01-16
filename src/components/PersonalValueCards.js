@@ -1,15 +1,36 @@
-import { Card, CardContent, CardHeader, Fade, Grid } from "@mui/material";
-import personalValues from "../app-data/personal-values";
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Fade,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import DetailsDialog from "./DetailsDialog";
+import { OpenInFull } from "@mui/icons-material";
 
 const ValueCard = styled(Card)`
-  min-width: 35vw;
+  background-color: ${(props) => props.selected && "yellow"};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
-  height: 25vh;
-  max-height: 30vh;
-  margin: 1vh;
+  height: 100%;
+
+  & .MuiCardContent-root {
+    padding: 5px;
+    height: 100%;
+  }
+
+  & .MuiCardActions-root {
+    padding: 5px;
+    flex-direction: row-reverse;
+  }
 
   &:hover {
     cursor: pointer;
@@ -19,22 +40,33 @@ const ValueCard = styled(Card)`
   }
 `;
 
-export default function PersonalValueCards() {
-  const values = personalValues;
+export default function PersonalValueCards(props) {
+  const { isTestPage, values, chosenValues, setChosenValues } = props;
 
   const [isDetailsOpen, toggleIsDetailsOpen] = useState(false);
-  const [valueSelected, toggleValueSelected] = useState(null);
+  const [openDetailForValue, toggleOpenDetailForValue] = useState(null);
 
   const handleOpenCard = (value) => {
-    toggleValueSelected(value);
+    toggleOpenDetailForValue(value);
     toggleIsDetailsOpen(!isDetailsOpen);
+  };
+
+  const handleCardClick = (value) => {
+    if (!isTestPage) {
+      handleOpenCard(value);
+    } else {
+      if (chosenValues?.includes(value)) {
+        setChosenValues(chosenValues?.filter((v) => v !== value));
+      } else {
+        setChosenValues([...chosenValues, value]);
+      }
+    }
   };
 
   return (
     <>
       <Grid
         container
-        xs={12}
         spacing={1}
         textAlign="center"
         alignItems="center"
@@ -45,13 +77,29 @@ export default function PersonalValueCards() {
             <Fade
               in={values.length > 0}
               timeout={{ enter: 500, exit: 250 }}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ transitionDelay: `${index * 250}ms` }}
               key={`asi-${v.id}-${index}`}
             >
-              <Grid item xs>
-                <ValueCard key={v} onClick={() => handleOpenCard(v)}>
-                  <CardHeader title={v.name}></CardHeader>
-                  <CardContent>{v.exerpt}</CardContent>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                sx={{ height: "100%", maxHeight: "30vh" }}
+                zeroMinWidth
+              >
+                <ValueCard key={v} selected={chosenValues?.includes(v)}>
+                  <Box onClick={() => handleCardClick(v)}>
+                    <CardHeader title={v.name} />
+                    <CardContent>
+                      <Typography variant="body2">{v.exerpt}</Typography>{" "}
+                    </CardContent>
+                  </Box>
+                  <CardActions>
+                    <IconButton size="small" onClick={() => handleOpenCard(v)}>
+                      <OpenInFull />
+                    </IconButton>
+                  </CardActions>
                 </ValueCard>
               </Grid>
             </Fade>
@@ -59,7 +107,7 @@ export default function PersonalValueCards() {
         ))}
         {isDetailsOpen && (
           <DetailsDialog
-            selectedValue={valueSelected}
+            selectedValue={openDetailForValue}
             handleOpenCard={() => handleOpenCard(null)}
             isDetailsOpen={isDetailsOpen}
           />

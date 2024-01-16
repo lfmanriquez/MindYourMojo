@@ -34,7 +34,6 @@ export default function LandingPage() {
       style={{ transitionDelay: `100ms` }}
     >
       <Grid
-        xs={12}
         container
         spacing={0}
         alignItems="center"
