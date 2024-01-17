@@ -14,8 +14,7 @@ import { useLocation, useNavigate } from "react-router";
 import ValueCard from "../../components/ValueCard";
 
 const ContainerGrid = styled(Grid)`
-  padding: 3vh;
-  margin: 0;
+  padding-left: 8%;
 `;
 
 export default function ComparisonTest() {
