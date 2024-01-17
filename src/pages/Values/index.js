@@ -11,7 +11,7 @@ export default function Values() {
       textAlign="center"
       alignItems="center"
       justifyContent="center"
-      sx={{ height: "100%", padding: "10px" }}
+      sx={{ height: "100%", padding: "5%" }}
     >
       <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2}>

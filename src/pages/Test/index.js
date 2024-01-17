@@ -13,8 +13,12 @@ const TestDrawer = styled(Drawer)`
 
 const ContainerGrid = styled(Grid)`
   height: 100%;
-  padding: 10px;
+  padding: 5%;
   padding-bottom: 12vh;
+
+  @media screen and (max-height: 390px) {
+    padding-bottom: 30vh;
+  }
 `;
 
 export default function PersonalValuesTest() {

@@ -5,6 +5,7 @@ import PersonalValuesTest from "./pages/Test";
 import Layout from "./pages/Layout/main";
 import Values from "./pages/Values";
 import ComparisonTest from "./pages/ComparisonTest";
+import Results from "./pages/Results";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="test" Component={PersonalValuesTest} />
         <Route path="comparison-test" Component={ComparisonTest} />
         <Route exact path="values" Component={Values} />
+        <Route exact path="results" Component={Results} />
       </Routes>
     </Layout>
   );

@@ -47,8 +47,8 @@ export default function LandingPage() {
             </Grid>
             <Grid item xs={12}>
               <Typography variant="caption">
-                KnowYourMojo allows you to discover your core values with our
-                free personalized test
+                {process.env.REACT_APP_NAME} allows you to discover your core
+                values with our free personalized test
               </Typography>
             </Grid>
             <Grid item xs={12}>
