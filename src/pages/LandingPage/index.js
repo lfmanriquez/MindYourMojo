@@ -38,7 +38,7 @@ export default function LandingPage() {
         spacing={0}
         alignItems="center"
         justifyContent="center"
-        sx={{ height: "100%", padding: "5vh" }}
+        sx={{ height: "100%", flexGrow: 1 }}
       >
         <Grid item xs={6} zeroMinWidth>
           <Grid container spacing={2}>

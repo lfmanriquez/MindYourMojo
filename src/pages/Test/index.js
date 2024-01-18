@@ -13,11 +13,8 @@ const TestDrawer = styled(Drawer)`
 
 const ContainerGrid = styled(Grid)`
   height: 100%;
-  padding: 5%;
-  padding-bottom: 12vh;
-
-  @media screen and (max-height: 390px) {
-    padding-bottom: 30vh;
+  @media screen and (max-width: 600px) {
+    margin-bottom: 40%;
   }
 `;
 
@@ -28,13 +25,7 @@ export default function PersonalValuesTest() {
   const [chosenValues, setChosenValues] = useState([]);
 
   return (
-    <ContainerGrid
-      container
-      spacing={4}
-      textAlign="center"
-      alignItems="center"
-      justifyContent="center"
-    >
+    <ContainerGrid container spacing={4}>
       <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2} textAlign="center">
           <Grid item xs={12} zeroMinWidth>

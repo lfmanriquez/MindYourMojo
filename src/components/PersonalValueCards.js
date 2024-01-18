@@ -30,7 +30,7 @@ export default function PersonalValueCards(props) {
     <>
       <Grid
         container
-        spacing={1}
+        spacing={6}
         textAlign="center"
         alignItems="center"
         direction="row"
@@ -39,7 +39,7 @@ export default function PersonalValueCards(props) {
           <Fade
             in={values.length > 0}
             timeout={{ enter: 500, exit: 250 }}
-            style={{ transitionDelay: `${index * 250}ms` }}
+            style={{ transitionDelay: `${index * 150}ms` }}
             key={`asi-${v.id}-${index}`}
           >
             <Grid

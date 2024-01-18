@@ -14,7 +14,10 @@ import { useLocation, useNavigate } from "react-router";
 import ValueCard from "../../components/ValueCard";
 
 const ContainerGrid = styled(Grid)`
-  padding-left: 8%;
+  @media screen and (max-width: 450px) {
+    padding-top: 20%;
+    padding-left: 8%;
+  }
 `;
 
 export default function ComparisonTest() {
@@ -23,6 +26,7 @@ export default function ComparisonTest() {
   const [values, setValues] = useState([]);
   const [testResults, setTestResults] = useState([]);
   const [progress, setProgress] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (chosenValues?.length) {
@@ -31,14 +35,18 @@ export default function ComparisonTest() {
   }, []);
 
   useEffect(() => {
-    let top3Results = testResults.filter((t) => t.votes === 5)?.length === 3;
-    if (top3Results) {
-      navigate("/results", { state: testResults.filter((t) => t.votes === 5) });
+    if (count === 30) {
+      let top5Results = testResults
+        .sort((a, b) => b.votes - a.votes)
+        .slice(0, 5);
+      navigate("/results", {
+        state: top5Results,
+      });
     }
-  }, [values]);
+  }, [count]);
 
   useEffect(() => {
-    let requiredVotes = testResults?.filter((t) => t.votes >= 5);
+    let requiredVotes = testResults?.filter((t) => t.votes >= 8);
     if (
       requiredVotes?.length &&
       values?.find((v) => requiredVotes.find((r) => r.id === v.id))
@@ -47,7 +55,7 @@ export default function ComparisonTest() {
         (v) => !requiredVotes.find((r) => r.id === v.id)
       );
       setValues(newValues);
-      setProgress((progress) => progress + Math.min(100 / newValues?.length));
+      setProgress(count * 2);
     }
   }, [testResults]);
 
@@ -65,6 +73,7 @@ export default function ComparisonTest() {
     } else {
       setTestResults([...testResults, { id: value.id, votes: 1 }]);
     }
+    setCount((count) => count + 1);
     setValues(shuffle(values));
   };
 

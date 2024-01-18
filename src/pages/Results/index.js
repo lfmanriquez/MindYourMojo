@@ -42,11 +42,13 @@ export default function Results() {
       </Grid>
       <Grid item xs={12}>
         <List>
-          {topValues?.map((t) => (
+          {topValues?.map((t, index) => (
             <ListItem key={t.id}>
               <Grid container>
                 <Grid item xs={12}>
-                  <Typography fontWeight="bold">{t.name}</Typography>
+                  <Typography fontWeight="bold">
+                    {index + 1}. {t.name}
+                  </Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="body1">{t.description}</Typography>

@@ -4,6 +4,12 @@ import styled from "@emotion/styled";
 
 const Main = styled.main`
   background-color: transparent;
+  margin: 10%;
+
+  @media screen and (min-width: 800px) {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 `;
 
 const MainLayout = styled(Box)`
