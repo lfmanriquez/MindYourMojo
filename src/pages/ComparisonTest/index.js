@@ -35,6 +35,7 @@ export default function ComparisonTest() {
   }, []);
 
   useEffect(() => {
+    setProgress(count * 3.3333);
     if (count === 30) {
       let top5Results = testResults
         .sort((a, b) => b.votes - a.votes)
@@ -55,7 +56,6 @@ export default function ComparisonTest() {
         (v) => !requiredVotes.find((r) => r.id === v.id)
       );
       setValues(newValues);
-      setProgress(count * 2);
     }
   }, [testResults]);
 
