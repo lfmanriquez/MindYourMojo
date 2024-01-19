@@ -10,6 +10,7 @@ import {
 const CustomDialog = styled(Dialog)`
   backdrop-filter: blur(3px);
   .MuiDialog-paper {
+    border-radius: 20px;
     @media screen and (max-width: 500px) {
       max-width: 85%;
       max-height: 50%;

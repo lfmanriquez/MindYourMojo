@@ -3,23 +3,33 @@ import {
   AppBar,
   Box,
   Button,
+  Divider,
   Drawer,
   Grid,
+  Icon,
   IconButton,
   List,
   ListItem,
+  ListItemAvatar,
   Stack,
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import {
+  AccountCircle,
+  Checklist,
+  Home,
+  Info,
+  ListAlt,
+} from "@mui/icons-material";
 
 const NavButton = styled(Button)`
-  color: black;
+  color: ${(props) => props.theme.palette.secondary.main};
   &:hover {
-    background-color: rgba(80, 80, 80, 0.1);
-    font-weight: bold;
+    background-color: ${(props) => props.theme.palette.secondary.light};
+    color: ${(props) => props.theme.palette.primary.main};
   }
 `;
 
@@ -29,18 +39,38 @@ const NavBar = styled(AppBar)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: ${(props) => props.theme.palette.primary.main};
   position: sticky;
   top: 0;
-  color: black;
+  color: ${(props) => props.theme.palette.secondary.main};
+`;
+
+const SideNav = styled(Drawer)`
+  .MuiDrawer-paper {
+    background-color: ${(props) => props.theme.palette.primary.main};
+    color: ${(props) => props.theme.palette.secondary.main};
+  }
 `;
 
 export default function NavigationBar() {
   const navigate = useNavigate();
   const pages = [
-    { name: "Test", route: "/test" },
-    { name: "List of Values", route: "/values" },
-    { name: "About", route: "/about" },
+    { name: "Home", route: "/", icon: <Home sx={{ marginRight: "1vh" }} /> },
+    {
+      name: "Test",
+      route: "/test",
+      icon: <Checklist sx={{ marginRight: "1vh" }} />,
+    },
+    {
+      name: "List of Values",
+      route: "/values",
+      icon: <ListAlt sx={{ marginRight: "1vh" }} />,
+    },
+    {
+      name: "About",
+      route: "/about",
+      icon: <Info sx={{ marginRight: "1vh" }} />,
+    },
   ];
 
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -69,7 +99,7 @@ export default function NavigationBar() {
           textAlign="start"
           sx={{ margin: " auto", paddingLeft: "1vh" }}
         >
-          <Button sx={{ color: "black" }}>
+          <Button color="secondary">
             <Typography
               variant="h6"
               onClick={() => handleRouteChange("/")}
@@ -91,7 +121,7 @@ export default function NavigationBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Drawer
+            <SideNav
               anchor="right"
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
@@ -100,15 +130,26 @@ export default function NavigationBar() {
               }}
             >
               <List>
+                <ListItem>
+                  <Button color="secondary">
+                    <AccountCircle sx={{ marginRight: "1vh" }} />
+                    <Typography textAlign="center">Profile</Typography>
+                  </Button>
+                </ListItem>
+                <Divider sx={{ backgroundColor: "white" }} variant="middle" />
                 {pages.map((page) => (
                   <ListItem key={page.id}>
-                    <Button onClick={() => handleRouteChange(page.route)}>
+                    <Button
+                      color="secondary"
+                      onClick={() => handleRouteChange(page.route)}
+                    >
+                      {page.icon}
                       <Typography textAlign="center">{page.name}</Typography>
                     </Button>
                   </ListItem>
                 ))}
               </List>
-            </Drawer>
+            </SideNav>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
             <Stack direction="row">

@@ -11,7 +11,9 @@ import {
 } from "@mui/material";
 
 const VCard = styled(Card)`
-  background-color: ${(props) => props.selected && "yellow"};
+  border-radius: 20px;
+  background-color: ${(props) =>
+    props.selected && props.theme.palette.secondary.light};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,14 +22,18 @@ const VCard = styled(Card)`
 
   & .MuiCardContent-root {
     padding: 5px;
-    height: 100%;
+    height: 5vh;
+    overflow: auto;
   }
 
   & .MuiCardActions-root {
     padding: 5px;
     flex-direction: row-reverse;
   }
-
+  @media screen and (max-width: 350px);
+   {
+    scale: 1;
+  }
   &:hover {
     cursor: pointer;
     scale: 1.01;
@@ -51,7 +57,7 @@ export default function ValueCard(props) {
       {hasDetails && (
         <CardActions>
           <IconButton size="small" onClick={() => handleOpenCard(value)}>
-            <LibraryBooksIcon />
+            <LibraryBooksIcon sx={{ marginRight: "1vh" }} />
           </IconButton>
         </CardActions>
       )}

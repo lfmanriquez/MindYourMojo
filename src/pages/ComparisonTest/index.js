@@ -2,9 +2,6 @@ import styled from "@emotion/styled";
 import {
   Button,
   ButtonGroup,
-  Card,
-  CardContent,
-  CardHeader,
   Grid,
   LinearProgress,
   Typography,
@@ -16,7 +13,19 @@ import ValueCard from "../../components/ValueCard";
 const ContainerGrid = styled(Grid)`
   @media screen and (max-width: 450px) {
     padding-top: 20%;
-    padding-left: 8%;
+  }
+`;
+
+const ProgressBar = styled.div`
+  @media screen and (min-width: 600px) {
+    transform: rotate(90deg);
+  }
+`;
+
+const ComparisonCard = styled(Grid)`
+  .MuiCard-root {
+    min-height: 20vh;
+    min-width: 20vw;
   }
 `;
 
@@ -98,30 +107,25 @@ export default function ComparisonTest() {
   };
 
   return (
-    <ContainerGrid
-      xs={12}
-      container
-      spacing={4}
-      textAlign="center"
-      alignItems="center"
-      justifyContent="center"
-    >
+    <ContainerGrid container spacing={4} textAlign="center" alignItems="center">
       <Grid item xs={12}>
         <Typography variant="h4">
           Choose which value is more important for you.
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={5}>
+        <Grid container spacing={4} alignItems="center">
+          <ComparisonCard item xs={12} sm={5}>
             <ValueCard value={values[0]} handleCardClick={addVote} />
+          </ComparisonCard>
+          <Grid item xs={12} sm={2}>
+            <ProgressBar>
+              <LinearProgress variant="determinate" value={progress} />
+            </ProgressBar>
           </Grid>
-          <Grid item xs={2}>
-            <LinearProgress variant="determinate" value={progress} />
-          </Grid>
-          <Grid item xs={5}>
+          <ComparisonCard item xs={12} sm={5}>
             <ValueCard value={values[1]} handleCardClick={addVote} />
-          </Grid>
+          </ComparisonCard>
         </Grid>
       </Grid>
       <Grid item xs={12}>

@@ -13,9 +13,13 @@ const TestDrawer = styled(Drawer)`
 
 const ContainerGrid = styled(Grid)`
   height: 100%;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 650px) {
     margin-bottom: 40%;
   }
+`;
+
+const ContinueButton = styled(Button)`
+  color: ${(props) => props.theme.palette.secondary.main};
 `;
 
 export default function PersonalValuesTest() {
@@ -60,19 +64,19 @@ export default function PersonalValuesTest() {
             Selected Values: {chosenValues?.length}
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Button
+            <ContinueButton
               color="primary"
               variant="contained"
               fullWidth
-              disabled={chosenValues?.length < 6}
+              disabled={chosenValues?.length < 10}
               onClick={() =>
                 navigate("/comparison-test", { state: chosenValues })
               }
             >
-              {chosenValues?.length >= 6
+              {chosenValues?.length >= 10
                 ? "Continue"
                 : `Select ${10 - chosenValues?.length} more`}
-            </Button>
+            </ContinueButton>
           </Grid>
         </Grid>
       </TestDrawer>

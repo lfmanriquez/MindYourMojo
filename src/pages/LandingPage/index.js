@@ -4,13 +4,13 @@ import LandingPageLogo from "./LandingPageLogo.png";
 import styled from "@emotion/styled";
 
 const BeginButton = styled(Button)`
-  background-color: black;
-  color: orange;
+  background-color: ${(props) => props.theme.palette.primary.main};
+  color: ${(props) => props.theme.palette.secondary.main};
   border-radius: 50px;
 
   &:hover {
-    background-color: orange;
-    color: black;
+    background-color: ${(props) => props.theme.palette.secondary.main};
+    color: ${(props) => props.theme.palette.primary.main};
   }
 `;
 
@@ -20,7 +20,7 @@ const ImgGrid = styled(Grid)`
   }
   @media screen and (max-width: 500px) {
     & img {
-      opacity: 0.2;
+      display: none;
     }
   }
 `;
@@ -40,8 +40,8 @@ export default function LandingPage() {
         justifyContent="center"
         sx={{ height: "100%", flexGrow: 1 }}
       >
-        <Grid item xs={6} zeroMinWidth>
-          <Grid container spacing={2}>
+        <Grid item xs={12} sm={6} zeroMinWidth>
+          <Grid container spacing={2} textAlign="center">
             <Grid item xs={12}>
               <Typography variant="h4">PERSONAL VALUES ASSESSMENT</Typography>
             </Grid>
@@ -53,6 +53,8 @@ export default function LandingPage() {
             </Grid>
             <Grid item xs={12}>
               <BeginButton
+                color="primary"
+                variant="container"
                 fullWidth
                 size="large"
                 onClick={() => navigate("/test")}
@@ -62,7 +64,7 @@ export default function LandingPage() {
             </Grid>
           </Grid>
         </Grid>
-        <ImgGrid item xs={6} zeroMinWidth>
+        <ImgGrid item xs={12} sm={6} zeroMinWidth>
           <img
             width={"100%"}
             height={"100%"}

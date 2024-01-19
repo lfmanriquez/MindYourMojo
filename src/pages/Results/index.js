@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 const ContainerGrid = styled(Grid)`
   height: 100%;
   padding: 5%;
-  padding-bottom: 12vh;
+  margin-bottom: 10%;
 
   @media screen and (max-height: 390px) {
-    padding-bottom: 30vh;
+    margin-bottom: 30%;
   }
 `;
 
@@ -22,9 +22,9 @@ export default function Results() {
 
   useEffect(() => {
     if (results?.length) {
-      let valuesToDisplay = values.filter((v) =>
-        results.find((r) => r.id === v.id)
-      );
+      let valuesToDisplay = values
+        .filter((v) => results.find((r) => r.id === v.id))
+        .sort((a, b) => results.indexOf(a) - results.indexOf(b));
       setTopValues(valuesToDisplay);
     }
   }, []);
