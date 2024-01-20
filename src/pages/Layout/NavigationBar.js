@@ -55,21 +55,21 @@ const SideNav = styled(Drawer)`
 export default function NavigationBar() {
   const navigate = useNavigate();
   const pages = [
-    { name: "Home", route: "/", icon: <Home sx={{ marginRight: "1vh" }} /> },
+    { name: "Home", route: "/", icon: <Home /> },
     {
-      name: "Test",
+      name: "QuizHub",
       route: "/test",
-      icon: <Checklist sx={{ marginRight: "1vh" }} />,
+      icon: <Checklist />,
     },
     {
       name: "List of Values",
       route: "/values",
-      icon: <ListAlt sx={{ marginRight: "1vh" }} />,
+      icon: <ListAlt />,
     },
     {
       name: "About",
       route: "/about",
-      icon: <Info sx={{ marginRight: "1vh" }} />,
+      icon: <Info />,
     },
   ];
 
@@ -140,10 +140,10 @@ export default function NavigationBar() {
                 {pages.map((page) => (
                   <ListItem key={page.id}>
                     <Button
+                      startIcon={page.icon}
                       color="secondary"
                       onClick={() => handleRouteChange(page.route)}
                     >
-                      {page.icon}
                       <Typography textAlign="center">{page.name}</Typography>
                     </Button>
                   </ListItem>

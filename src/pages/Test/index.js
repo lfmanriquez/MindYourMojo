@@ -34,12 +34,12 @@ export default function PersonalValuesTest() {
         <Grid container spacing={2} textAlign="center">
           <Grid item xs={12} zeroMinWidth>
             <Typography variant="h4">
-              Select values that resonate with you.
+              Identify values that matter most to you.
             </Typography>
           </Grid>
           <Grid item xs={12} zeroMinWidth>
             <Typography variant="body1">
-              Please select at least ten values from the list below.
+              Please select ten values in boxes below.
             </Typography>
           </Grid>
         </Grid>
@@ -68,12 +68,12 @@ export default function PersonalValuesTest() {
               color="primary"
               variant="contained"
               fullWidth
-              disabled={chosenValues?.length < 10}
+              disabled={chosenValues?.length !== 10}
               onClick={() =>
                 navigate("/comparison-test", { state: chosenValues })
               }
             >
-              {chosenValues?.length >= 10
+              {chosenValues?.length === 10
                 ? "Continue"
                 : `Select ${10 - chosenValues?.length} more`}
             </ContinueButton>

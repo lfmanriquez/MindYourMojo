@@ -18,10 +18,15 @@ const ImgGrid = styled(Grid)`
   & img {
     opacity: 1;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     & img {
       display: none;
     }
+  }
+`;
+const GridContainer = styled(Grid)`
+  @media screen and (max-width: 600px) {
+    margin-top: 50%;
   }
 `;
 
@@ -33,7 +38,7 @@ export default function LandingPage() {
       timeout={{ enter: 500, exit: 250 }}
       style={{ transitionDelay: `100ms` }}
     >
-      <Grid
+      <GridContainer
         container
         spacing={0}
         alignItems="center"
@@ -43,12 +48,13 @@ export default function LandingPage() {
         <Grid item xs={12} sm={6} zeroMinWidth>
           <Grid container spacing={2} textAlign="center">
             <Grid item xs={12}>
-              <Typography variant="h4">PERSONAL VALUES ASSESSMENT</Typography>
+              <Typography color="secondary" variant="h4">
+                Values DigiQuiz
+              </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="caption">
-                {process.env.REACT_APP_NAME} allows you to discover your core
-                values with our free personalized test
+                Discover what matters most to you.
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -59,7 +65,7 @@ export default function LandingPage() {
                 size="large"
                 onClick={() => navigate("/test")}
               >
-                Begin Your Test
+                Begin Your DigiQuiz
               </BeginButton>
             </Grid>
           </Grid>
@@ -72,7 +78,7 @@ export default function LandingPage() {
             alt="values"
           />
         </ImgGrid>
-      </Grid>
+      </GridContainer>
     </Fade>
   );
 }

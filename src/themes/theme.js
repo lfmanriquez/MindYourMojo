@@ -1,6 +1,12 @@
 import { createTheme } from "@mui/material/styles";
 
 export const appTheme = createTheme({
+  typography: {
+    allVariants: {
+      fontFamily: "montserrat",
+      textTransform: "none",
+    },
+  },
   palette: {
     primary: {
       light: "#145da0",

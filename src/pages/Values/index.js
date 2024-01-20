@@ -20,11 +20,10 @@ export default function Values() {
           </Grid>
           <Grid item xs={12} zeroMinWidth>
             <Typography variant="body1">
-              Here is a list of all the personal values that were used in the
-              assessment. It was prepared based on our research in the field of
-              basic human values. Each value is followed by a few synonyms or a
-              short description, which makes it easier to understand and at the
-              same time leaves room for wider interpretation.
+              Below is a compilation of the values used in the DigiQuiz, crafted
+              from our exploration into fundamental human values. Each value is
+              accompanied by a brief description or synonyms to provide a simple
+              understanding while giving you wiggle room for meaning.
             </Typography>
           </Grid>
         </Grid>

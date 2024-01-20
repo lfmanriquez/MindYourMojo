@@ -24,9 +24,15 @@ export default function DetailsDialog(props) {
     <>
       <CustomDialog open={isDetailsOpen} onClose={() => handleOpenCard()}>
         <DialogTitle>
-          <Grid container>
+          <Grid container spacing={2}>
             <Grid item xs={12}>
-              {selectedValue.name}
+              <Typography
+                variant="h5"
+                fontWeight="bold"
+                textTransform="uppercase"
+              >
+                {selectedValue.name}
+              </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="subtitle2">

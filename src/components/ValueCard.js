@@ -19,11 +19,18 @@ const VCard = styled(Card)`
   justify-content: space-between;
   width: 100%;
   height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px 3px;
 
+  & .MuiCardHeader-root {
+    & .MuiTypography-root {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+  }
   & .MuiCardContent-root {
-    padding: 5px;
-    height: 5vh;
-    overflow: auto;
+    overflow: visible;
+    max-height: 8vh;
   }
 
   & .MuiCardActions-root {
@@ -37,8 +44,6 @@ const VCard = styled(Card)`
   &:hover {
     cursor: pointer;
     scale: 1.01;
-    box-shadow: 0px 2px 1px -1px black, 0px 1px 1px 0px black,
-      0px 1px 3px 0px black;
   }
 `;
 
