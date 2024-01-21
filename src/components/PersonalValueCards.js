@@ -47,7 +47,7 @@ export default function PersonalValueCards(props) {
               xs={12}
               sm={6}
               md={4}
-              sx={{ height: "100%", maxHeight: "30vh" }}
+              sx={{ height: "100%" }}
               zeroMinWidth
             >
               <ValueCard

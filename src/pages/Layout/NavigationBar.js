@@ -131,8 +131,7 @@ export default function NavigationBar() {
             >
               <List>
                 <ListItem>
-                  <Button color="secondary">
-                    <AccountCircle sx={{ marginRight: "1vh" }} />
+                  <Button color="secondary" startIcon={<AccountCircle />}>
                     <Typography textAlign="center">Profile</Typography>
                   </Button>
                 </ListItem>

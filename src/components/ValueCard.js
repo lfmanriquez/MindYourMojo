@@ -6,37 +6,28 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Grid,
   IconButton,
   Typography,
 } from "@mui/material";
 
 const VCard = styled(Card)`
+  padding: 5%;
   border-radius: 20px;
   background-color: ${(props) =>
     props.selected && props.theme.palette.secondary.light};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
-  height: 100%;
+  min-width: 20vw;
+  height: 20vh;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px 3px;
 
-  & .MuiCardHeader-root {
-    & .MuiTypography-root {
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: 1.3rem;
-    }
-  }
-  & .MuiCardContent-root {
-    overflow: visible;
-    max-height: 8vh;
+  @media screen and (min-width: 800px) {
+    min-width: 20vw;
+    max-height: 15vh;
   }
 
-  & .MuiCardActions-root {
-    padding: 5px;
-    flex-direction: row-reverse;
-  }
   @media screen and (max-width: 350px);
    {
     scale: 1;
@@ -47,25 +38,44 @@ const VCard = styled(Card)`
   }
 `;
 
+const Header = styled(Typography)`
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.1rem;
+`;
+
 export default function ValueCard(props) {
   const { value, selected, handleCardClick, handleOpenCard, hasDetails } =
     props;
 
   return (
-    <VCard key={value} selected={selected}>
-      <Box onClick={() => handleCardClick(value)}>
-        <CardHeader title={value?.name} />
-        <CardContent>
-          <Typography variant="body2">{value?.exerpt}</Typography>{" "}
-        </CardContent>
-      </Box>
-      {hasDetails && (
-        <CardActions>
-          <IconButton size="small" onClick={() => handleOpenCard(value)}>
-            <LibraryBooksIcon sx={{ marginRight: "1vh" }} />
-          </IconButton>
-        </CardActions>
-      )}
+    <VCard
+      key={value}
+      selected={selected}
+      onClick={() => handleCardClick(value)}
+    >
+      <Grid container sx={{ height: "100%" }}>
+        <Grid item xs={12} zeroMinWidth>
+          <Header>{value?.name}</Header>
+        </Grid>
+        <Grid item xs={12} zeroMinWidth>
+          <Typography variant="body1">{value?.exerpt}</Typography>
+        </Grid>
+        {hasDetails && (
+          <Grid
+            item
+            xs={12}
+            container
+            justifyContent="flex-end"
+            alignItems="end"
+            zeroMinWidth
+          >
+            <IconButton onClick={() => handleOpenCard(value)}>
+              <LibraryBooksIcon />
+            </IconButton>
+          </Grid>
+        )}
+      </Grid>
     </VCard>
   );
 }

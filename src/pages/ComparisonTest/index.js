@@ -1,21 +1,10 @@
 import styled from "@emotion/styled";
-import {
-  Button,
-  ButtonGroup,
-  Grid,
-  LinearProgress,
-  Typography,
-} from "@mui/material";
+import { Button, Grid, LinearProgress, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import ValueCard from "../../components/ValueCard";
 import { Clear, Undo } from "@mui/icons-material";
-
-const ContainerGrid = styled(Grid)`
-  @media screen and (max-width: 450px) {
-    padding-top: 5%;
-  }
-`;
+import produce, { applyPatches } from "immer";
 
 const ProgressBar = styled.div`
   @media screen and (min-width: 600px) {
@@ -106,7 +95,7 @@ export default function ComparisonTest() {
   };
 
   return (
-    <ContainerGrid container spacing={4} textAlign="center" alignItems="center">
+    <Grid container spacing={4} textAlign="center" alignItems="center">
       <Grid item xs={12}>
         <Typography variant="h4">
           Choose which value is more important for you.
@@ -147,6 +136,6 @@ export default function ComparisonTest() {
           </Grid>
         </Grid>
       </Grid>
-    </ContainerGrid>
+    </Grid>
   );
 }
