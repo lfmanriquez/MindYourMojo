@@ -95,7 +95,13 @@ export default function ComparisonTest() {
   };
 
   return (
-    <Grid container spacing={4} textAlign="center" alignItems="center">
+    <Grid
+      container
+      spacing={4}
+      textAlign="center"
+      alignItems="center"
+      sx={{ marginTop: "-15%" }}
+    >
       <Grid item xs={12}>
         <Typography variant="h4">
           Choose which value is more important for you.
