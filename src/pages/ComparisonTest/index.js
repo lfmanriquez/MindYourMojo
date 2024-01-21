@@ -4,25 +4,18 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import ValueCard from "../../components/ValueCard";
 import { Clear, Undo } from "@mui/icons-material";
-import produce, { applyPatches } from "immer";
+import { useHistoryState } from "@uidotdev/usehooks";
 
 const ProgressBar = styled.div`
   @media screen and (min-width: 600px) {
-    transform: rotate(90deg);
-  }
-`;
-
-const ComparisonCard = styled(Grid)`
-  .MuiCard-root {
-    min-height: 20vh;
-    min-width: 20vw;
+    transform: rotate(-90deg);
   }
 `;
 
 const BorderLinearProgress = styled(LinearProgress)`
-  background-color: ${(props) => props.theme.palette.secondary.main};
+  background-color: ${(props) => props.theme.palette.primary.main};
 
-  .MuiLinearProgress-bar1 {
+  & .MuiLinearProgress-bar1Determinate {
     background-color: ${(props) => props.theme.palette.secondary.main};
   }
 `;
@@ -30,38 +23,39 @@ const BorderLinearProgress = styled(LinearProgress)`
 export default function ComparisonTest() {
   const { state: chosenValues } = useLocation();
   const navigate = useNavigate();
-  const [values, setValues] = useState([]);
+  // const [values, setValues] = useState([]);
   const [progress, setProgress] = useState(0);
-  const [count, setCount] = useState(0);
+  const { state, set, undo, canUndo } = useHistoryState({
+    values: chosenValues,
+    count: 0,
+  });
 
   useEffect(() => {
-    if (chosenValues?.length) {
-      setValues(chosenValues);
-    }
-  }, []);
-
-  useEffect(() => {
-    setProgress(count * 4);
-    if (count === 25) {
-      let top5Results = values.sort((a, b) => b.vote - a.vote).slice(0, 5);
+    setProgress(state.count * 4);
+    if (state.count === 25) {
+      let top5Results = state.values
+        .sort((a, b) => b.vote - a.vote)
+        .slice(0, 5);
       navigate("/results", {
         state: top5Results,
       });
     }
-  }, [count]);
+  }, [state.count]);
 
   useEffect(() => {
-    let valuesToRemove = values?.filter((t) => t.vote >= 5 || t.loss >= 5);
+    let valuesToRemove = state.values?.filter(
+      (t) => t.vote >= 5 || t.loss >= 5
+    );
     if (valuesToRemove?.length) {
-      let newValues = values.filter(
+      let newValues = state.values.filter(
         (v) => !valuesToRemove.find((r) => r.id === v.id)
       );
-      setValues(newValues);
+      set({ ...state, values: newValues });
     }
-  }, [values]);
+  }, [state.values]);
 
   const addVote = (winningVote, losingVote) => {
-    let updatedVotes = values.map((v) => {
+    let updatedVotes = state.values.map((v) => {
       if (winningVote.id === v.id) {
         return { ...v, vote: v.vote + 1 };
       }
@@ -70,8 +64,7 @@ export default function ComparisonTest() {
       }
       return v;
     });
-    setValues(shuffle(updatedVotes));
-    setCount((count) => count + 1);
+    set({ ...state, values: shuffle(updatedVotes), count: state.count + 1 });
   };
 
   const shuffle = (array) => {
@@ -100,7 +93,7 @@ export default function ComparisonTest() {
       spacing={4}
       textAlign="center"
       alignItems="center"
-      sx={{ marginTop: "-15%" }}
+      sx={{ marginTop: "-20%" }}
     >
       <Grid item xs={12}>
         <Typography variant="h4">
@@ -109,34 +102,45 @@ export default function ComparisonTest() {
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={4} alignItems="center">
-          <ComparisonCard item xs={12} sm={5}>
+          <Grid item xs={12} sm={5}>
             <ValueCard
-              value={values[0]}
-              handleCardClick={() => addVote(values[0], values[1])}
+              value={state.values[0]}
+              handleCardClick={() => addVote(state.values[0], state.values[1])}
             />
-          </ComparisonCard>
+          </Grid>
           <Grid item xs={12} sm={2}>
             <ProgressBar>
               <BorderLinearProgress variant="determinate" value={progress} />
             </ProgressBar>
           </Grid>
-          <ComparisonCard item xs={12} sm={5}>
+          <Grid item xs={12} sm={5}>
             <ValueCard
-              value={values[1]}
-              handleCardClick={() => addVote(values[1], values[0])}
+              value={state.values[1]}
+              handleCardClick={() => addVote(state.values[1], state.values[0])}
             />
-          </ComparisonCard>
+          </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={1}>
           <Grid item xs={6} sm={6}>
-            <Button variant="outlined" color="primary" startIcon={<Undo />}>
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<Undo />}
+              onClick={undo}
+              disabled={!canUndo}
+            >
               Undo
             </Button>
           </Grid>
           <Grid item xs={6} sm={6}>
-            <Button variant="outlined" color="secondary" startIcon={<Clear />}>
+            <Button
+              variant="outlined"
+              color="secondary"
+              startIcon={<Clear />}
+              onClick={() => navigate("/")}
+            >
               Restart Test
             </Button>
           </Grid>
