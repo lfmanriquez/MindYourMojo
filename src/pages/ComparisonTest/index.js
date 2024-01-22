@@ -88,13 +88,7 @@ export default function ComparisonTest() {
   };
 
   return (
-    <Grid
-      container
-      spacing={4}
-      textAlign="center"
-      alignItems="center"
-      sx={{ marginTop: "-20%" }}
-    >
+    <Grid container spacing={4} textAlign="center" alignItems="center">
       <Grid item xs={12}>
         <Typography variant="h4">
           Choose which value is more important for you.
@@ -122,7 +116,7 @@ export default function ComparisonTest() {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Grid container spacing={1}>
+        <Grid container>
           <Grid item xs={6} sm={6}>
             <Button
               variant="outlined"
