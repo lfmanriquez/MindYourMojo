@@ -16,7 +16,9 @@ export default function Values() {
       <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2}>
           <Grid item xs={12} zeroMinWidth>
-            <Typography variant="h4">Personal Values List</Typography>
+            <Typography variant="h4" color="secondary" fontWeight="bold">
+              Personal Values List
+            </Typography>
           </Grid>
           <Grid item xs={12} zeroMinWidth>
             <Typography variant="body1">

@@ -33,7 +33,7 @@ export default function PersonalValuesTest() {
       <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2} textAlign="center">
           <Grid item xs={12} zeroMinWidth>
-            <Typography variant="h4">
+            <Typography color="secondary" variant="h4" fontWeight="bold">
               Identify values that matter most to you.
             </Typography>
           </Grid>
