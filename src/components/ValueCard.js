@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 
 const VCard = styled(Card)`
+  cursor: pointer;
   padding: 5%;
   border-radius: 20px;
   background-color: ${(props) =>
@@ -23,7 +24,7 @@ const VCard = styled(Card)`
   height: 20vh;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px 3px;
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 1500px) {
     min-width: 20vw;
     max-height: 15vh;
   }

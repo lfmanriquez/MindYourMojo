@@ -1,14 +1,21 @@
 import styled from "@emotion/styled";
-import { Grid, List, ListItem, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
+import { ExpandCircleDown } from "@mui/icons-material";
 
-const ContainerGrid = styled(Grid)`
-  height: 100%;
-  margin-bottom: 10%;
+const CustomAccordion = styled(Accordion)`
+  border: none;
+  box-shadow: none;
 
-  @media screen and (max-height: 390px) {
-    margin-bottom: 30%;
+  ::before {
+    background-color: ${(props) => props.theme.palette.secondary.main};
   }
 `;
 
@@ -24,7 +31,7 @@ export default function Results() {
   }, []);
 
   return (
-    <ContainerGrid
+    <Grid
       container
       spacing={4}
       textAlign="center"
@@ -32,26 +39,29 @@ export default function Results() {
       justifyContent="center"
     >
       <Grid item xs={12}>
-        <Typography variant="h4">Your Personal Values Results</Typography>
+        <Typography variant="h4" color="secondary" fontWeight="bold">
+          My Top 5 Values
+        </Typography>
       </Grid>
       <Grid item xs={12}>
-        <List>
-          {topValues?.map((t, index) => (
-            <ListItem key={t.id}>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Typography fontWeight="bold">
-                    {index + 1}. {t.name}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="body1">{t.description}</Typography>
-                </Grid>
-              </Grid>
-            </ListItem>
-          ))}
-        </List>
+        {topValues?.map((t, index) => (
+          <CustomAccordion key={index}>
+            <AccordionSummary expandIcon={<ExpandCircleDown color="primary" />}>
+              <Typography
+                fontWeight="bold"
+                color="primary"
+                textTransform="capitalize"
+                variant="h5"
+              >
+                #{index + 1} {t.name}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography variant="body1">{t.description}</Typography>
+            </AccordionDetails>
+          </CustomAccordion>
+        ))}
       </Grid>
-    </ContainerGrid>
+    </Grid>
   );
 }

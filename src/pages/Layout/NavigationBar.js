@@ -6,11 +6,9 @@ import {
   Divider,
   Drawer,
   Grid,
-  Icon,
   IconButton,
   List,
   ListItem,
-  ListItemAvatar,
   Stack,
   Typography,
 } from "@mui/material";
@@ -24,8 +22,10 @@ import {
   Info,
   ListAlt,
 } from "@mui/icons-material";
+import MindYourMojoLogo from "./mindyourmojo.png";
 
 const NavButton = styled(Button)`
+  cursor: pointer;
   color: ${(props) => props.theme.palette.secondary.main};
   &:hover {
     background-color: ${(props) => props.theme.palette.secondary.light};
@@ -34,6 +34,7 @@ const NavButton = styled(Button)`
 `;
 
 const NavBar = styled(AppBar)`
+  height: 100%;
   flex: 1;
   align-self: flex-start;
   display: flex;
@@ -93,20 +94,13 @@ export default function NavigationBar() {
   return (
     <NavBar>
       <Grid container alignItems="center">
-        <Grid
-          item
-          xs={4}
-          textAlign="start"
-          sx={{ margin: " auto", paddingLeft: "1vh" }}
-        >
-          <Button color="secondary">
-            <Typography
-              variant="h6"
-              onClick={() => handleRouteChange("/")}
-              noWrap
-            >
-              {process.env.REACT_APP_NAME}
-            </Typography>
+        <Grid item xs={4} textAlign="start">
+          <Button
+            sx={{ maxHeight: "5vh" }}
+            color="secondary"
+            onClick={() => handleRouteChange("/")}
+          >
+            <img src={MindYourMojoLogo} height={"100%"} width={"100vw"} />
           </Button>
         </Grid>
         <Grid item xs={8} textAlign="end">
@@ -139,6 +133,7 @@ export default function NavigationBar() {
                 {pages.map((page) => (
                   <ListItem key={page.id}>
                     <Button
+                      style={{ cursor: "pointer" }}
                       startIcon={page.icon}
                       color="secondary"
                       onClick={() => handleRouteChange(page.route)}

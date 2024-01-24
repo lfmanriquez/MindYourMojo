@@ -90,9 +90,20 @@ export default function ComparisonTest() {
   return (
     <Grid container spacing={4} textAlign="center" alignItems="center">
       <Grid item xs={12}>
-        <Typography variant="h4">
-          Choose which value is more important for you.
-        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Typography variant="h4" color="secondary" fontWeight="bold">
+              Select the value most important to you.
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body1">
+              The blue indicator gauge in the center is similar to a fuel gauge.
+              It will continue to fill with gold until completely full of your
+              top 5 values. This will take approximately 25 selections.
+            </Typography>
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={4} alignItems="center">

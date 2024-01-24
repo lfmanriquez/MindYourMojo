@@ -12,11 +12,6 @@ const BeginButton = styled(Button)`
     color: ${(props) => props.theme.palette.primary.main};
   }
 `;
-const GridContainer = styled(Grid)`
-  @media screen and (max-width: 600px) {
-    margin-top: 50%;
-  }
-`;
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -24,9 +19,9 @@ export default function LandingPage() {
     <Fade
       in
       timeout={{ enter: 500, exit: 250 }}
-      style={{ transitionDelay: `100ms` }}
+      style={{ transitionDelay: `100ms`, height: "60vh" }}
     >
-      <GridContainer
+      <Grid
         container
         spacing={0}
         alignItems="center"
@@ -58,7 +53,7 @@ export default function LandingPage() {
             </Grid>
           </Grid>
         </Grid>
-      </GridContainer>
+      </Grid>
     </Fade>
   );
 }
