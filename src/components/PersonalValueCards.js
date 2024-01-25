@@ -36,30 +36,23 @@ export default function PersonalValueCards(props) {
         direction="row"
       >
         {values.map((v, index) => (
-          <Fade
-            in={values.length > 0}
-            timeout={{ enter: 500, exit: 250 }}
-            style={{ transitionDelay: `${index * 150}ms` }}
-            key={`asi-${v.id}-${index}`}
-          >
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              sx={{ height: "100%" }}
-              zeroMinWidth
-            >
-              <ValueCard
-                key={index}
-                value={v}
-                selected={chosenValues?.includes(v)}
-                handleCardClick={handleCardClick}
-                handleOpenCard={handleOpenCard}
-                hasDetails
-              />
-            </Grid>
-          </Fade>
+          // <Fade
+          //   in={values.length > 0}
+          //   timeout={{ enter: 500, exit: 250 }}
+          //   style={{ transitionDelay: `${index * 150}ms` }}
+          //   key={`asi-${v.id}-${index}`}
+          // >
+          <Grid item xs={12} sm={6} md={4} sx={{ height: "100%" }} zeroMinWidth>
+            <ValueCard
+              key={index}
+              value={v}
+              selected={chosenValues?.includes(v)}
+              handleCardClick={handleCardClick}
+              handleOpenCard={handleOpenCard}
+              hasDetails
+            />
+          </Grid>
+          // </Fade>
         ))}
         {isDetailsOpen && (
           <DetailsDialog

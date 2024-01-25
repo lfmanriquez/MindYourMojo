@@ -56,11 +56,6 @@ const SideNav = styled(Drawer)`
 
 const MenuButton = styled(IconButton)`
   height: 100%;
-
-  & .MuiSvgIcon-root {
-    height: 100%;
-    width: 100%;
-  }
 `;
 
 export default function NavigationBar() {
@@ -135,7 +130,7 @@ export default function NavigationBar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <MenuIcon sx={{ height: "100%", width: "100%" }} />
             </MenuButton>
             <SideNav
               anchor="right"
