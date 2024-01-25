@@ -4,6 +4,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Grid,
+  Slide,
   Typography,
 } from "@mui/material";
 import { useLocation } from "react-router";
@@ -45,21 +46,32 @@ export default function Results() {
       </Grid>
       <Grid item xs={12}>
         {topValues?.map((t, index) => (
-          <CustomAccordion key={index}>
-            <AccordionSummary expandIcon={<ExpandCircleDown color="primary" />}>
-              <Typography
-                fontWeight="bold"
-                color="primary"
-                textTransform="capitalize"
-                variant="h5"
+          <Slide
+            direction="left"
+            in={topValues.length > 0}
+            timeout={{ enter: 500, exit: 250 }}
+            style={{ transitionDelay: `${index * 250}ms` }}
+            key={`asi-${t.id}-${index}`}
+          >
+            <CustomAccordion>
+              <AccordionSummary
+                expandIcon={<ExpandCircleDown color="primary" />}
               >
-                #{index + 1} {t.name}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography variant="body1">{t.description}</Typography>
-            </AccordionDetails>
-          </CustomAccordion>
+                <Typography
+                  fontWeight="bold"
+                  color="primary"
+                  fontFamily="Playfair Display"
+                  textTransform="capitalize"
+                  variant="h5"
+                >
+                  #{index + 1} {t.name}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography variant="body1">{t.description}</Typography>
+              </AccordionDetails>
+            </CustomAccordion>
+          </Slide>
         ))}
       </Grid>
     </Grid>

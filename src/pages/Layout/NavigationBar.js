@@ -25,6 +25,7 @@ import {
 import MindYourMojoLogo from "./mindyourmojo.png";
 
 const NavButton = styled(Button)`
+  height: 50%;
   cursor: pointer;
   color: ${(props) => props.theme.palette.secondary.main};
   &:hover {
@@ -34,7 +35,7 @@ const NavButton = styled(Button)`
 `;
 
 const NavBar = styled(AppBar)`
-  height: 100%;
+  height: 10vh;
   flex: 1;
   align-self: flex-start;
   display: flex;
@@ -50,6 +51,15 @@ const SideNav = styled(Drawer)`
   .MuiDrawer-paper {
     background-color: ${(props) => props.theme.palette.primary.main};
     color: ${(props) => props.theme.palette.secondary.main};
+  }
+`;
+
+const MenuButton = styled(IconButton)`
+  height: 100%;
+
+  & .MuiSvgIcon-root {
+    height: 100%;
+    width: 100%;
   }
 `;
 
@@ -93,19 +103,31 @@ export default function NavigationBar() {
 
   return (
     <NavBar>
-      <Grid container alignItems="center">
-        <Grid item xs={4} textAlign="start">
+      <Grid container alignItems="center" sx={{ height: "100%" }}>
+        <Grid
+          item
+          xs={4}
+          textAlign="start"
+          sx={{ height: "100%" }}
+          zeroMinWidth
+        >
           <Button
-            sx={{ maxHeight: "5vh" }}
+            sx={{ minHeight: "100%", height: "100%" }}
             color="secondary"
             onClick={() => handleRouteChange("/")}
           >
-            <img src={MindYourMojoLogo} height={"100%"} width={"100vw"} />
+            <img src={MindYourMojoLogo} width={160} />
           </Button>
         </Grid>
-        <Grid item xs={8} textAlign="end">
-          <Box sx={{ flexGrow: 1, display: { xs: "block", sm: "none" } }}>
-            <IconButton
+        <Grid item xs={8} textAlign="end" sx={{ height: "100%" }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "block", sm: "none" },
+              height: "100%",
+            }}
+          >
+            <MenuButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -114,7 +136,7 @@ export default function NavigationBar() {
               color="inherit"
             >
               <MenuIcon />
-            </IconButton>
+            </MenuButton>
             <SideNav
               anchor="right"
               open={Boolean(anchorElNav)}
@@ -145,8 +167,14 @@ export default function NavigationBar() {
               </List>
             </SideNav>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
-            <Stack direction="row">
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "flex" },
+              height: "100%",
+            }}
+          >
+            <Stack direction="row" spacing={1} alignItems="center">
               {pages.map((page) => (
                 <NavButton
                   key={page.id}
