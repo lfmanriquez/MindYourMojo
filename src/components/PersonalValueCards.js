@@ -42,7 +42,7 @@ export default function PersonalValueCards(props) {
           //   style={{ transitionDelay: `${index * 150}ms` }}
           //   key={`asi-${v.id}-${index}`}
           // >
-          <Grid item xs={12} sm={6} md={4} sx={{ height: "100%" }} zeroMinWidth>
+          <Grid item xs={6} sm={6} md={4} sx={{ height: "100%" }} zeroMinWidth>
             <ValueCard
               key={index}
               value={v}
