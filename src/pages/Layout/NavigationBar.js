@@ -56,6 +56,7 @@ const SideNav = styled(Drawer)`
 
 const MenuButton = styled(IconButton)`
   height: 100%;
+  width: 30%;
 `;
 
 export default function NavigationBar() {
@@ -130,7 +131,7 @@ export default function NavigationBar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <MenuIcon sx={{ width: "100%", height: "100%" }} />
             </MenuButton>
             <SideNav
               anchor="right"
