@@ -130,7 +130,7 @@ export default function NavigationBar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon sx={{ height: "100%", width: "100%" }} />
+              <MenuIcon />
             </MenuButton>
             <SideNav
               anchor="right"
