@@ -12,7 +12,7 @@ const VCard = styled(Card)`
   flex-direction: column;
   justify-content: space-between;
   min-width: 20vw;
-  height: 18vh;
+  height: 20vh;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px 3px;
 
   @media screen and (min-width: 1500px) {
