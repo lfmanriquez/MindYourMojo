@@ -12,7 +12,7 @@ const VCard = styled(Card)`
   flex-direction: column;
   justify-content: space-between;
   min-width: 20vw;
-  height: 20vh;
+  height: 22vh;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px 3px;
 
   @media screen and (min-width: 1500px) {
@@ -33,7 +33,7 @@ const VCard = styled(Card)`
 const Header = styled(Typography)`
   text-transform: uppercase;
   font-weight: bolder;
-  font-size: 16px;
+  font-size: 15px;
 `;
 
 export default function ValueCard(props) {
