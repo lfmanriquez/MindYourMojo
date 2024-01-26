@@ -176,7 +176,7 @@ export default function NavigationBar() {
                   key={page.id}
                   onClick={() => handleRouteChange(page.route)}
                 >
-                  {page.name}
+                  <Typography variant="h6">{page.name}</Typography>
                 </NavButton>
               ))}
             </Stack>

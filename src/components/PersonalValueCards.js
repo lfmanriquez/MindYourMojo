@@ -30,7 +30,7 @@ export default function PersonalValueCards(props) {
     <>
       <Grid
         container
-        spacing={6}
+        spacing={4}
         textAlign="center"
         alignItems="center"
         direction="row"
