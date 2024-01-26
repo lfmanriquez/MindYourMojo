@@ -47,6 +47,7 @@ export default function LandingPage() {
                 fullWidth
                 size="large"
                 onClick={() => navigate("/test")}
+                disabled
               >
                 <Typography variant="button">Begin Your DigiQuiz</Typography>
               </BeginButton>
