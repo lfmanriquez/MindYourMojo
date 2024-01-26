@@ -1,15 +1,6 @@
 import styled from "@emotion/styled";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Card, Grid, IconButton, Typography } from "@mui/material";
 
 const VCard = styled(Card)`
   cursor: pointer;
@@ -21,7 +12,7 @@ const VCard = styled(Card)`
   flex-direction: column;
   justify-content: space-between;
   min-width: 20vw;
-  height: 25vh;
+  height: 18vh;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px 3px;
 
   @media screen and (min-width: 1500px) {
@@ -41,8 +32,8 @@ const VCard = styled(Card)`
 
 const Header = styled(Typography)`
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.1rem;
+  font-weight: bolder;
+  font-size: 16px;
 `;
 
 export default function ValueCard(props) {
