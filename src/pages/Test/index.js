@@ -13,9 +13,6 @@ const TestDrawer = styled(Drawer)`
 
 const ContainerGrid = styled(Grid)`
   height: 100%;
-  @media screen and (max-width: 650px) {
-    margin-bottom: 40%;
-  }
 `;
 
 const ContinueButton = styled(Button)`
@@ -29,29 +26,31 @@ export default function PersonalValuesTest() {
   const [chosenValues, setChosenValues] = useState([]);
 
   return (
-    <ContainerGrid container spacing={4}>
-      <Grid item xs={12} zeroMinWidth>
-        <Grid container spacing={2} textAlign="center">
-          <Grid item xs={12} zeroMinWidth>
-            <Typography color="secondary" variant="h4" fontWeight="bold">
-              Identify values that matter most to you.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} zeroMinWidth>
-            <Typography variant="body1">
-              Please select ten values in boxes below.
-            </Typography>
+    <>
+      <ContainerGrid container spacing={4}>
+        <Grid item xs={12} zeroMinWidth>
+          <Grid container spacing={2} textAlign="center">
+            <Grid item xs={12} zeroMinWidth>
+              <Typography color="secondary" variant="h4" fontWeight="bold">
+                Identify values that matter most to you.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} zeroMinWidth>
+              <Typography variant="body1">
+                Please select ten values in boxes below.
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-      <Grid item xs={12} zeroMinWidth>
-        <PersonalValueCards
-          values={values}
-          isTestPage
-          chosenValues={chosenValues}
-          setChosenValues={setChosenValues}
-        />
-      </Grid>
+        <Grid item xs={12} zeroMinWidth>
+          <PersonalValueCards
+            values={values}
+            isTestPage
+            chosenValues={chosenValues}
+            setChosenValues={setChosenValues}
+          />
+        </Grid>
+      </ContainerGrid>
       <TestDrawer anchor="bottom" variant="persistent" open={isTestPage}>
         <Grid
           container
@@ -80,6 +79,6 @@ export default function PersonalValuesTest() {
           </Grid>
         </Grid>
       </TestDrawer>
-    </ContainerGrid>
+    </>
   );
 }

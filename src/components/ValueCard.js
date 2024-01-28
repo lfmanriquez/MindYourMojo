@@ -44,7 +44,7 @@ export default function ValueCard(props) {
     <VCard
       key={value}
       selected={selected}
-      onClick={() => handleCardClick(value)}
+      onClick={(e) => handleCardClick(e, value)}
     >
       <Grid container sx={{ height: "100%" }}>
         <Grid item xs={12} zeroMinWidth>
@@ -62,7 +62,7 @@ export default function ValueCard(props) {
             alignItems="end"
             zeroMinWidth
           >
-            <IconButton onClick={() => handleOpenCard(value)}>
+            <IconButton onClick={(e) => handleOpenCard(e, value)}>
               <LibraryBooksIcon />
             </IconButton>
           </Grid>

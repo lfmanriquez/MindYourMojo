@@ -2,6 +2,22 @@ import { Fade, Grid } from "@mui/material";
 import React, { useState } from "react";
 import DetailsDialog from "./DetailsDialog";
 import ValueCard from "./ValueCard";
+import styled from "@emotion/styled";
+
+const GridContainer = styled(Grid)`
+  height: 60vh;
+  overflow: auto;
+  padding: 1%;
+  @media (min-width: 700px) and (min-height: 800px) {
+    height: 70vh;
+  }
+  @media (min-width: 600px) and (max-width: 708px) {
+    height: 55vh;
+  }
+  @media (min-width: 450px) and (max-width: 600px) {
+    height: 50vh;
+  }
+`;
 
 export default function PersonalValueCards(props) {
   const { isTestPage, values, chosenValues, setChosenValues } = props;
@@ -9,14 +25,15 @@ export default function PersonalValueCards(props) {
   const [isDetailsOpen, toggleIsDetailsOpen] = useState(false);
   const [openDetailForValue, toggleOpenDetailForValue] = useState(null);
 
-  const handleOpenCard = (value) => {
+  const handleOpenCard = (e, value) => {
+    e.stopPropagation();
     toggleOpenDetailForValue(value);
     toggleIsDetailsOpen(!isDetailsOpen);
   };
 
-  const handleCardClick = (value) => {
+  const handleCardClick = (e, value) => {
     if (!isTestPage) {
-      handleOpenCard(value);
+      handleOpenCard(e, value);
     } else {
       if (chosenValues?.includes(value)) {
         setChosenValues(chosenValues?.filter((v) => v !== value));
@@ -28,7 +45,7 @@ export default function PersonalValueCards(props) {
 
   return (
     <>
-      <Grid
+      <GridContainer
         container
         spacing={4}
         textAlign="center"
@@ -36,32 +53,25 @@ export default function PersonalValueCards(props) {
         direction="row"
       >
         {values.map((v, index) => (
-          // <Fade
-          //   in={values.length > 0}
-          //   timeout={{ enter: 500, exit: 250 }}
-          //   style={{ transitionDelay: `${index * 150}ms` }}
-          //   key={`asi-${v.id}-${index}`}
-          // >
-          <Grid item xs={6} sm={6} md={4} sx={{ height: "100%" }} zeroMinWidth>
+          <Grid item xs={6} sm={6} md={4} zeroMinWidth>
             <ValueCard
               key={index}
               value={v}
               selected={chosenValues?.includes(v)}
-              handleCardClick={handleCardClick}
-              handleOpenCard={handleOpenCard}
+              handleCardClick={(e) => handleCardClick(e, v)}
+              handleOpenCard={(e) => handleOpenCard(e, v)}
               hasDetails
             />
           </Grid>
-          // </Fade>
         ))}
         {isDetailsOpen && (
           <DetailsDialog
             selectedValue={openDetailForValue}
-            handleOpenCard={() => handleOpenCard(null)}
+            handleOpenCard={(e) => handleOpenCard(e, null)}
             isDetailsOpen={isDetailsOpen}
           />
         )}
-      </Grid>
+      </GridContainer>
     </>
   );
 }

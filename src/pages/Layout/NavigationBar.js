@@ -151,7 +151,6 @@ export default function NavigationBar() {
                 {pages.map((page) => (
                   <ListItem key={page.id}>
                     <Button
-                      disabled={page.name === "QuizHub"}
                       style={{ cursor: "pointer" }}
                       startIcon={page.icon}
                       color="secondary"
@@ -174,7 +173,6 @@ export default function NavigationBar() {
             <Stack direction="row" spacing={1} alignItems="center">
               {pages.map((page) => (
                 <NavButton
-                  disabled={page.name === "QuizHub"}
                   key={page.id}
                   onClick={() => handleRouteChange(page.route)}
                 >

@@ -22,7 +22,7 @@ export default function DetailsDialog(props) {
   const { selectedValue, handleOpenCard, isDetailsOpen } = props;
   return (
     <>
-      <CustomDialog open={isDetailsOpen} onClose={() => handleOpenCard()}>
+      <CustomDialog open={isDetailsOpen} onClose={(e) => handleOpenCard(e)}>
         <DialogTitle>
           <Grid container spacing={2}>
             <Grid item xs={12}>
