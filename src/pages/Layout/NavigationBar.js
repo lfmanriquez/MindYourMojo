@@ -35,7 +35,7 @@ const NavButton = styled(Button)`
 `;
 
 const NavBar = styled(AppBar)`
-  height: 10vh;
+  height: 10%;
   flex: 1;
   align-self: flex-start;
   display: flex;
