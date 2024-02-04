@@ -14,7 +14,6 @@ const TestDrawer = styled(Drawer)`
 
 const ContainerGrid = styled(Grid)`
   margin-top: 0;
-  height: calc(100% - var(--test-footer-height));
 `;
 
 const ContinueButton = styled(Button)`
@@ -29,7 +28,7 @@ export default function PersonalValuesTest() {
 
   return (
     <>
-      <ContainerGrid container spacing={4}>
+      <ContainerGrid container spacing={4} sx={{ flexGrow: 1 }}>
         <Grid item xs={12} zeroMinWidth sx={{ margin: "0px 5px 5px 5px" }}>
           <Grid container spacing={2} textAlign="center">
             <Grid item xs={12} zeroMinWidth>

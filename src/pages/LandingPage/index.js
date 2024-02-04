@@ -32,7 +32,7 @@ export default function LandingPage() {
         spacing={0}
         alignItems="center"
         justifyContent="center"
-        sx={{ height: "100%", flexGrow: 1 }}
+        sx={{ flexGrow: 1 }}
       >
         <MainGrid item xs={12} zeroMinWidth>
           <Grid container spacing={2} textAlign="center">

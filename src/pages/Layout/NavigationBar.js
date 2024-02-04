@@ -25,7 +25,7 @@ import {
 import MindYourMojoLogo from "./mindyourmojo.png";
 
 const NavButton = styled(Button)`
-  height: 50%;
+  height: 100%;
   cursor: pointer;
   color: ${(props) => props.theme.palette.secondary.main};
   &:hover {
@@ -36,7 +36,6 @@ const NavButton = styled(Button)`
 
 const NavBar = styled(AppBar)`
   height: 10vh;
-  min-height: var(--header-height, initial);
   flex: 1;
   align-self: flex-start;
   display: flex;

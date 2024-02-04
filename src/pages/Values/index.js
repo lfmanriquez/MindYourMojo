@@ -5,7 +5,6 @@ import styled from "@emotion/styled";
 
 const ContainerGrid = styled(Grid)`
   margin-top: 0;
-  height: calc(100% - var(--test-footer-height));
 `;
 
 export default function Values() {
@@ -17,7 +16,6 @@ export default function Values() {
       textAlign="center"
       alignItems="center"
       justifyContent="center"
-      sx={{ height: "100%" }}
     >
       <Grid item xs={12} zeroMinWidth sx={{ margin: "0px 5px 5px 5px" }}>
         <Grid container spacing={2}>
