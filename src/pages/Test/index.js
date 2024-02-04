@@ -28,7 +28,7 @@ export default function PersonalValuesTest() {
   return (
     <>
       <ContainerGrid container spacing={4}>
-        <Grid item xs={12} zeroMinWidth>
+        <Grid item xs={12} zeroMinWidth sx={{ margin: "0px 5px 5px 5px" }}>
           <Grid container spacing={2} textAlign="center">
             <Grid item xs={12} zeroMinWidth>
               <Typography color="secondary" variant="h4" fontWeight="bold">

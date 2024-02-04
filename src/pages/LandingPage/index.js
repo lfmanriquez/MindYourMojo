@@ -13,13 +13,19 @@ const BeginButton = styled(Button)`
   }
 `;
 
+const MainGrid = styled(Grid)`
+  @media screen and (min-width: 600px) {
+    margin: 0 30%;
+  }
+`;
+
 export default function LandingPage() {
   const navigate = useNavigate();
   return (
     <Fade
       in
-      timeout={{ enter: 500, exit: 250 }}
-      style={{ transitionDelay: `100ms`, height: "60vh" }}
+      timeout={{ enter: 500, exit: 300 }}
+      style={{ transitionDelay: `300ms`, height: "60vh" }}
     >
       <Grid
         container
@@ -28,7 +34,7 @@ export default function LandingPage() {
         justifyContent="center"
         sx={{ height: "100%", flexGrow: 1 }}
       >
-        <Grid item xs={12} zeroMinWidth>
+        <MainGrid item xs={12} zeroMinWidth>
           <Grid container spacing={2} textAlign="center">
             <Grid item xs={12}>
               <Typography fontWeight="bold" color="secondary" variant="h4">
@@ -52,7 +58,7 @@ export default function LandingPage() {
               </BeginButton>
             </Grid>
           </Grid>
-        </Grid>
+        </MainGrid>
       </Grid>
     </Fade>
   );

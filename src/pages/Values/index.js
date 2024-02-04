@@ -13,7 +13,7 @@ export default function Values() {
       justifyContent="center"
       sx={{ height: "100%" }}
     >
-      <Grid item xs={12} zeroMinWidth>
+      <Grid item xs={12} zeroMinWidth sx={{ margin: "0px 5px 5px 5px" }}>
         <Grid container spacing={2}>
           <Grid item xs={12} zeroMinWidth>
             <Typography variant="h4" color="secondary" fontWeight="bold">

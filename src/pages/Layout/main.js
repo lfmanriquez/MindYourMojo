@@ -5,6 +5,7 @@ import Div100vh from "react-div-100vh";
 
 const MainLayout = styled(Box)`
   height: 100vh;
+  min-height: -webkit-fill-available;
   width: 100%;
   box-sizing: border-box;
 `;
@@ -14,7 +15,7 @@ export default function Layout(props) {
   return (
     <Div100vh>
       <NavigationBar />
-      <main style={{ padding: "1%", height: "89%" }}>{children}</main>
+      <main style={{ padding: "1%", height: "80%" }}>{children}</main>
     </Div100vh>
   );
 }
