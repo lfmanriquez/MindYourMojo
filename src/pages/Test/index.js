@@ -7,12 +7,14 @@ import { useNavigate } from "react-router";
 
 const TestDrawer = styled(Drawer)`
   .MuiPaper-root {
+    height: var(--test-footer-height);
     padding: 12px;
   }
 `;
 
 const ContainerGrid = styled(Grid)`
-  height: 100%;
+  margin-top: 0;
+  height: calc(100% - var(--test-footer-height));
 `;
 
 const ContinueButton = styled(Button)`
@@ -58,6 +60,7 @@ export default function PersonalValuesTest() {
           alignItems="center"
           justifyContent="center"
           textAlign="center"
+          sx={{ height: "100%" }}
         >
           <Grid item xs={12} sm={6}>
             Selected Values: {chosenValues?.length}

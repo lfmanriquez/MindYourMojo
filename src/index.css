@@ -1,5 +1,6 @@
 :root {
-  --header-height: 80px;
+  --header-height: 10dvh;
+  --test-footer-height: 12dvh;
 }
 
 html {

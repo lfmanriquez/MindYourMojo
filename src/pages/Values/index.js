@@ -1,11 +1,17 @@
 import { Grid, Typography } from "@mui/material";
 import PersonalValueCards from "../../components/PersonalValueCards";
 import personalValues from "../../app-data/personal-values";
+import styled from "@emotion/styled";
+
+const ContainerGrid = styled(Grid)`
+  margin-top: 0;
+  height: calc(100% - var(--test-footer-height));
+`;
 
 export default function Values() {
   const values = personalValues;
   return (
-    <Grid
+    <ContainerGrid
       container
       spacing={4}
       textAlign="center"
@@ -33,6 +39,6 @@ export default function Values() {
       <Grid item xs={12} zeroMinWidth>
         <PersonalValueCards values={values} />
       </Grid>
-    </Grid>
+    </ContainerGrid>
   );
 }

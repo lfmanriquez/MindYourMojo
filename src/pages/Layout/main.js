@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import NavigationBar from "./NavigationBar";
 import styled from "@emotion/styled";
-import Div100vh from "react-div-100vh";
 
 const MainLayout = styled(Box)`
   height: 100dvh;
