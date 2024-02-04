@@ -4,8 +4,7 @@ import styled from "@emotion/styled";
 import Div100vh from "react-div-100vh";
 
 const MainLayout = styled(Box)`
-  height: 100vh;
-  min-height: -webkit-fill-available;
+  height: 100dvh;
   width: 100%;
   box-sizing: border-box;
 `;
@@ -13,9 +12,16 @@ const MainLayout = styled(Box)`
 export default function Layout(props) {
   const { children } = props;
   return (
-    <Div100vh>
+    <MainLayout>
       <NavigationBar />
-      <main style={{ padding: "1%", height: "80%" }}>{children}</main>
-    </Div100vh>
+      <main
+        style={{
+          padding: "1%",
+          minHeight: "calc(100dvh - var(--header-height))",
+        }}
+      >
+        {children}
+      </main>
+    </MainLayout>
   );
 }
