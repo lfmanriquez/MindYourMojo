@@ -94,16 +94,7 @@ export default function ComparisonTest() {
       alignItems="center"
       sx={{ flexGrow: 1, height: "inherit" }}
     >
-      <Grid item xs={12}>
-        Test
-      </Grid>
-      <Grid item xs={12}>
-        Test
-      </Grid>
-      <Grid item xs={12}>
-        Test
-      </Grid>
-      {/* <Grid item xs={12} zeroMinWidth>
+      <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h4" color="secondary" fontWeight="bold">
@@ -169,7 +160,7 @@ export default function ComparisonTest() {
             </Button>
           </Grid>
         </Grid>
-      </Grid> */}
+      </Grid>
     </Grid>
   );
 }
