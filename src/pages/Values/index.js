@@ -3,22 +3,16 @@ import PersonalValueCards from "../../components/PersonalValueCards";
 import personalValues from "../../app-data/personal-values";
 import styled from "@emotion/styled";
 
-const ContainerGrid = styled(Grid)`
-  margin-top: 0;
-`;
-
 export default function Values() {
   const values = personalValues;
   return (
-    <ContainerGrid
+    <Grid
       container
       spacing={4}
-      textAlign="center"
-      alignItems="center"
-      justifyContent="center"
+      sx={{ flexGrow: 1, height: "calc(100% - 16dvh)", paddingBottom: "2vh" }}
     >
       <Grid item xs={12} zeroMinWidth sx={{ margin: "0px 5px 5px 5px" }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} textAlign="center">
           <Grid item xs={12} zeroMinWidth>
             <Typography variant="h4" color="secondary" fontWeight="bold">
               Personal Values List
@@ -34,9 +28,14 @@ export default function Values() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} zeroMinWidth>
+      <Grid
+        item
+        xs={12}
+        zeroMinWidth
+        sx={{ overflowY: "auto", height: "inherit" }}
+      >
         <PersonalValueCards values={values} />
       </Grid>
-    </ContainerGrid>
+    </Grid>
   );
 }

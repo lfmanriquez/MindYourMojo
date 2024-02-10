@@ -4,21 +4,6 @@ import DetailsDialog from "./DetailsDialog";
 import ValueCard from "./ValueCard";
 import styled from "@emotion/styled";
 
-const GridContainer = styled(Grid)`
-  height: 60vh;
-  overflow: auto;
-  padding: 1%;
-  @media (min-width: 700px) and (min-height: 800px) {
-    height: 70vh;
-  }
-  @media (min-width: 600px) and (max-width: 708px) {
-    height: 55vh;
-  }
-  @media (min-width: 450px) and (max-width: 600px) {
-    height: 50vh;
-  }
-`;
-
 export default function PersonalValueCards(props) {
   const { isTestPage, values, chosenValues, setChosenValues } = props;
 
@@ -45,12 +30,13 @@ export default function PersonalValueCards(props) {
 
   return (
     <>
-      <GridContainer
+      <Grid
         container
         spacing={4}
         textAlign="center"
         alignItems="center"
         direction="row"
+        sx={{ padding: "2dvh" }}
       >
         {values.map((v, index) => (
           <Grid item xs={6} sm={6} md={4} zeroMinWidth>
@@ -71,7 +57,7 @@ export default function PersonalValueCards(props) {
             isDetailsOpen={isDetailsOpen}
           />
         )}
-      </GridContainer>
+      </Grid>
     </>
   );
 }

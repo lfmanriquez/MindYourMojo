@@ -1,6 +1,5 @@
 :root {
   --header-height: 10dvh;
-  --test-footer-height: 12dvh;
 }
 
 html {
@@ -10,15 +9,11 @@ html {
 }
 
 body {
-  min-height: 100dvh;
-  min-width: 100dvw;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body > #root > div {
+  overflow: hidden;
   height: 100dvh;
   width: 100dvw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {

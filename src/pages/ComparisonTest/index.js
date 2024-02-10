@@ -92,16 +92,25 @@ export default function ComparisonTest() {
       container
       textAlign="center"
       alignItems="center"
-      sx={{ height: "100%" }}
+      sx={{ flexGrow: 1, height: "inherit" }}
     >
       <Grid item xs={12}>
+        Test
+      </Grid>
+      <Grid item xs={12}>
+        Test
+      </Grid>
+      <Grid item xs={12}>
+        Test
+      </Grid>
+      {/* <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h4" color="secondary" fontWeight="bold">
               Select the value most important to you.
             </Typography>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} zeroMinWidth>
             <Typography variant="body1">
               The blue indicator gauge in the center is similar to a fuel gauge.
               It will continue to fill with gold until completely full of your
@@ -110,25 +119,25 @@ export default function ComparisonTest() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} zeroMinWidth>
         <Grid
           container
           spacing={4}
           alignItems="center"
           sx={{ paddingX: "2dvh" }}
         >
-          <Grid item xs={12} sm={5}>
+          <Grid item xs={12} sm={5} zeroMinWidth>
             <ValueCard
               value={state.values[0]}
               handleCardClick={() => addVote(state.values[0], state.values[1])}
             />
           </Grid>
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={2} zeroMinWidth>
             <ProgressBar>
               <BorderLinearProgress variant="determinate" value={progress} />
             </ProgressBar>
           </Grid>
-          <Grid item xs={12} sm={5}>
+          <Grid item xs={12} sm={5} zeroMinWidth>
             <ValueCard
               value={state.values[1]}
               handleCardClick={() => addVote(state.values[1], state.values[0])}
@@ -136,9 +145,9 @@ export default function ComparisonTest() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2}>
-          <Grid item xs={6} sm={6} textAlign="end">
+          <Grid item xs={6} sm={6} textAlign="end" zeroMinWidth>
             <Button
               variant="outlined"
               color="primary"
@@ -149,7 +158,7 @@ export default function ComparisonTest() {
               Undo
             </Button>
           </Grid>
-          <Grid item xs={6} sm={6} textAlign="start">
+          <Grid item xs={6} sm={6} textAlign="start" zeroMinWidth>
             <Button
               variant="outlined"
               color="secondary"
@@ -160,7 +169,7 @@ export default function ComparisonTest() {
             </Button>
           </Grid>
         </Grid>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }

@@ -7,8 +7,8 @@ import { useNavigate } from "react-router";
 
 const TestDrawer = styled(Drawer)`
   .MuiPaper-root {
-    height: var(--test-footer-height);
-    padding: 12px;
+    height: 12dvh;
+    padding-left: 0 5dvw 0 5dvw;
   }
 `;
 
@@ -24,7 +24,11 @@ export default function PersonalValuesTest() {
 
   return (
     <>
-      <Grid container spacing={4} sx={{ flexGrow: 1 }}>
+      <Grid
+        container
+        spacing={4}
+        sx={{ flexGrow: 1, height: "calc(100% - 14dvh)", paddingBottom: "2vh" }}
+      >
         <Grid item xs={12} zeroMinWidth sx={{ margin: "0px 5px 5px 5px" }}>
           <Grid container spacing={2} textAlign="center">
             <Grid item xs={12} zeroMinWidth>
@@ -39,7 +43,12 @@ export default function PersonalValuesTest() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} zeroMinWidth>
+        <Grid
+          item
+          xs={12}
+          zeroMinWidth
+          sx={{ overflowY: "auto", height: "inherit" }}
+        >
           <PersonalValueCards
             values={values}
             isTestPage
