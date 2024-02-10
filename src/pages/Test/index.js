@@ -12,10 +12,6 @@ const TestDrawer = styled(Drawer)`
   }
 `;
 
-const ContainerGrid = styled(Grid)`
-  margin-top: 0;
-`;
-
 const ContinueButton = styled(Button)`
   color: ${(props) => props.theme.palette.secondary.main};
 `;
@@ -28,7 +24,7 @@ export default function PersonalValuesTest() {
 
   return (
     <>
-      <ContainerGrid container spacing={4} sx={{ flexGrow: 1 }}>
+      <Grid container spacing={4} sx={{ flexGrow: 1 }}>
         <Grid item xs={12} zeroMinWidth sx={{ margin: "0px 5px 5px 5px" }}>
           <Grid container spacing={2} textAlign="center">
             <Grid item xs={12} zeroMinWidth>
@@ -51,7 +47,7 @@ export default function PersonalValuesTest() {
             setChosenValues={setChosenValues}
           />
         </Grid>
-      </ContainerGrid>
+      </Grid>
       <TestDrawer anchor="bottom" variant="persistent" open={isTestPage}>
         <Grid
           container

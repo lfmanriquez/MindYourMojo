@@ -5,16 +5,20 @@
 
 html {
   touch-action: manipulation;
-  height: -webkit-fill-available;
+  height: 100dvh;
+  width: 100dvw;
 }
 
 body {
-  min-height: 100vh;
-  /* mobile viewport bug fix */
-  min-height: -webkit-fill-available;
-
+  min-height: 100dvh;
+  min-width: 100dvw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body > #root > div {
+  height: 100dvh;
+  width: 100dvw;
 }
 
 code {

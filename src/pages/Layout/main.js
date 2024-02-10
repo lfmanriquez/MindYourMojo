@@ -7,7 +7,9 @@ export default function Layout(props) {
       <NavigationBar />
       <main
         style={{
+          height: "calc(100% - var(--header-height))",
           padding: "1%",
+          position: "fixed",
         }}
       >
         {children}

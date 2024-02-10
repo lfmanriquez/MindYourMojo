@@ -88,7 +88,12 @@ export default function ComparisonTest() {
   };
 
   return (
-    <Grid container spacing={4} textAlign="center" alignItems="center">
+    <Grid
+      container
+      textAlign="center"
+      alignItems="center"
+      sx={{ height: "100%" }}
+    >
       <Grid item xs={12}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -106,7 +111,12 @@ export default function ComparisonTest() {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Grid container spacing={4} alignItems="center">
+        <Grid
+          container
+          spacing={4}
+          alignItems="center"
+          sx={{ paddingX: "2dvh" }}
+        >
           <Grid item xs={12} sm={5}>
             <ValueCard
               value={state.values[0]}
@@ -127,8 +137,8 @@ export default function ComparisonTest() {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Grid container>
-          <Grid item xs={6} sm={6}>
+        <Grid container spacing={2}>
+          <Grid item xs={6} sm={6} textAlign="end">
             <Button
               variant="outlined"
               color="primary"
@@ -139,7 +149,7 @@ export default function ComparisonTest() {
               Undo
             </Button>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={6} sm={6} textAlign="start">
             <Button
               variant="outlined"
               color="secondary"
