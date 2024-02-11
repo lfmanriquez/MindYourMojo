@@ -1,7 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import PersonalValueCards from "../../components/PersonalValueCards";
 import personalValues from "../../app-data/personal-values";
-import styled from "@emotion/styled";
 
 export default function Values() {
   const values = personalValues;
@@ -9,17 +8,27 @@ export default function Values() {
     <Grid
       container
       spacing={4}
-      sx={{ flexGrow: 1, height: "calc(100% - 16dvh)", paddingBottom: "2vh" }}
+      sx={{
+        flexGrow: 1,
+        height: "inherit",
+        paddingBottom: "2vh",
+        position: "fixed",
+      }}
     >
-      <Grid item xs={12} zeroMinWidth sx={{ margin: "0px 5px 5px 5px" }}>
+      <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2} textAlign="center">
           <Grid item xs={12} zeroMinWidth>
-            <Typography variant="h4" color="secondary" fontWeight="bold">
+            <Typography
+              variant
+              color="secondary"
+              fontWeight="bolder"
+              fontSize={"4dvh"}
+            >
               Personal Values List
             </Typography>
           </Grid>
           <Grid item xs={12} zeroMinWidth>
-            <Typography variant="body1">
+            <Typography variant fontSize={"3.5dvw"}>
               Below is a compilation of the values used in the DigiQuiz, crafted
               from our exploration into fundamental human values. Each value is
               accompanied by a brief description or synonyms to provide a simple
@@ -28,12 +37,7 @@ export default function Values() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        zeroMinWidth
-        sx={{ overflowY: "auto", height: "inherit" }}
-      >
+      <Grid item xs={12} zeroMinWidth sx={{ overflowY: "auto", height: "70%" }}>
         <PersonalValueCards values={values} />
       </Grid>
     </Grid>

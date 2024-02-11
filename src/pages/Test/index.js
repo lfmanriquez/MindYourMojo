@@ -7,8 +7,8 @@ import { useNavigate } from "react-router";
 
 const TestDrawer = styled(Drawer)`
   .MuiPaper-root {
-    height: 12dvh;
-    padding-left: 0 5dvw 0 5dvw;
+    height: 15%;
+    padding: 1dvh;
   }
 `;
 
@@ -26,19 +26,28 @@ export default function PersonalValuesTest() {
     <>
       <Grid
         container
-        spacing={4}
-        sx={{ flexGrow: 1, height: "calc(100% - 14dvh)", paddingBottom: "2vh" }}
+        sx={{
+          flexGrow: 1,
+          height: "calc(100% - 32dvh)",
+          position: "fixed",
+          paddingBottom: "2vh",
+        }}
       >
-        <Grid item xs={12} zeroMinWidth sx={{ margin: "0px 5px 5px 5px" }}>
+        <Grid item xs={12} zeroMinWidth sx={{ marginX: "1dvw" }}>
           <Grid container spacing={2} textAlign="center">
             <Grid item xs={12} zeroMinWidth>
-              <Typography color="secondary" variant="h4" fontWeight="bold">
+              <Typography
+                variant
+                color="secondary"
+                fontWeight="bolder"
+                fontSize={"4dvh"}
+              >
                 Identify values that matter most to you.
               </Typography>
             </Grid>
             <Grid item xs={12} zeroMinWidth>
               <Typography variant="body1">
-                Please select ten values in boxes below.
+                Please select ten values of sixty-two in boxes below.
               </Typography>
             </Grid>
           </Grid>
@@ -47,7 +56,7 @@ export default function PersonalValuesTest() {
           item
           xs={12}
           zeroMinWidth
-          sx={{ overflowY: "auto", height: "inherit" }}
+          sx={{ overflowY: "auto", height: "80%" }}
         >
           <PersonalValueCards
             values={values}

@@ -1,16 +1,19 @@
 :root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   --header-height: 10dvh;
 }
 
 html {
   touch-action: manipulation;
-  height: 100dvh;
-  width: 100dvw;
+  height: -webkit-fill-available;
 }
 
 body {
   overflow: hidden;
   height: 100dvh;
+  height: -webkit-fill-available;
   width: 100dvw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

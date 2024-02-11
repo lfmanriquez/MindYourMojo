@@ -92,17 +92,22 @@ export default function ComparisonTest() {
       container
       textAlign="center"
       alignItems="center"
-      sx={{ flexGrow: 1, height: "inherit" }}
+      sx={{ flexGrow: 1, height: "inherit", position: "fixed" }}
     >
       <Grid item xs={12} zeroMinWidth>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography variant="h4" color="secondary" fontWeight="bold">
+            <Typography
+              variant
+              color="secondary"
+              fontWeight="bolder"
+              fontSize={"4dvh"}
+            >
               Select the value most important to you.
             </Typography>
           </Grid>
           <Grid item xs={12} zeroMinWidth>
-            <Typography variant="body1">
+            <Typography variant fontSize={"3.5dvw"}>
               The blue indicator gauge in the center is similar to a fuel gauge.
               It will continue to fill with gold until completely full of your
               top 5 values. This will take approximately 25 selections.
@@ -111,12 +116,7 @@ export default function ComparisonTest() {
         </Grid>
       </Grid>
       <Grid item xs={12} zeroMinWidth>
-        <Grid
-          container
-          spacing={4}
-          alignItems="center"
-          sx={{ paddingX: "2dvh" }}
-        >
+        <Grid container spacing={4} alignItems="center">
           <Grid item xs={12} sm={5} zeroMinWidth>
             <ValueCard
               value={state.values[0]}
