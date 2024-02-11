@@ -12,11 +12,21 @@ const TestDrawer = styled(Drawer)`
   }
 `;
 
-const ContinueButton = styled(Button)`
-  color: ${(props) => props.theme.palette.secondary.main};
+const HeaderGrid = styled(Grid)`
+  z-index: 9999;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 4px 2px -2px;
 `;
 
-export default function PersonalValuesTest() {
+const ContinueButton = styled(Button)`
+  color: ${(props) => props.theme.palette.secondary.main};
+
+  &:hover {
+    background-color: ${(props) => props.theme.palette.secondary.main};
+    color: ${(props) => props.theme.palette.primary.main};
+  }
+`;
+
+export default function PersonalValuesTest(props) {
   const navigate = useNavigate();
   const values = personalValues;
   const isTestPage = true;
@@ -28,13 +38,13 @@ export default function PersonalValuesTest() {
         container
         sx={{
           flexGrow: 1,
-          height: "calc(100% - 32dvh)",
+          height: "calc(100% - 25dvh)",
           position: "fixed",
           paddingBottom: "2vh",
         }}
       >
-        <Grid item xs={12} zeroMinWidth sx={{ marginX: "1dvw" }}>
-          <Grid container spacing={2} textAlign="center">
+        <HeaderGrid item xs={12} zeroMinWidth>
+          <Grid container textAlign="center" sx={{ paddingX: "2dvw" }}>
             <Grid item xs={12} zeroMinWidth>
               <Typography
                 variant
@@ -46,12 +56,12 @@ export default function PersonalValuesTest() {
               </Typography>
             </Grid>
             <Grid item xs={12} zeroMinWidth>
-              <Typography variant="body1">
-                Please select ten values of sixty-two in boxes below.
+              <Typography variant fontSize={"2dvh"}>
+                Please select ten values from the sixty-two boxes below.
               </Typography>
             </Grid>
           </Grid>
-        </Grid>
+        </HeaderGrid>
         <Grid
           item
           xs={12}
@@ -76,11 +86,12 @@ export default function PersonalValuesTest() {
           sx={{ height: "100%" }}
         >
           <Grid item xs={12} sm={6}>
-            Selected Values: {chosenValues?.length}
+            <Typography variant fontWeight="bolder">
+              Selected Values: {chosenValues?.length}
+            </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <ContinueButton
-              color="primary"
               variant="contained"
               fullWidth
               disabled={chosenValues?.length !== 10}

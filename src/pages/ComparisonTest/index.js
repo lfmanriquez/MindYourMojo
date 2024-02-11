@@ -20,6 +20,10 @@ const BorderLinearProgress = styled(LinearProgress)`
   }
 `;
 
+const UndoButton = styled(Button)`
+  color: ${(props) => props.theme.palette.primary.main};
+`;
+
 export default function ComparisonTest() {
   const { state: chosenValues } = useLocation();
   const navigate = useNavigate();
@@ -92,10 +96,15 @@ export default function ComparisonTest() {
       container
       textAlign="center"
       alignItems="center"
-      sx={{ flexGrow: 1, height: "inherit", position: "fixed" }}
+      sx={{
+        flexGrow: 1,
+        height: "inherit",
+        position: "fixed",
+        paddingBottom: "2dvh",
+      }}
     >
       <Grid item xs={12} zeroMinWidth>
-        <Grid container spacing={2}>
+        <Grid container>
           <Grid item xs={12}>
             <Typography
               variant
@@ -107,7 +116,7 @@ export default function ComparisonTest() {
             </Typography>
           </Grid>
           <Grid item xs={12} zeroMinWidth>
-            <Typography variant fontSize={"3.5dvw"}>
+            <Typography variant fontSize={"2dvh"}>
               The blue indicator gauge in the center is similar to a fuel gauge.
               It will continue to fill with gold until completely full of your
               top 5 values. This will take approximately 25 selections.
@@ -115,8 +124,8 @@ export default function ComparisonTest() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} zeroMinWidth>
-        <Grid container spacing={4} alignItems="center">
+      <Grid item xs={12} zeroMinWidth sx={{ margin: "0 5%" }}>
+        <Grid container spacing={2} alignItems="center">
           <Grid item xs={12} sm={5} zeroMinWidth>
             <ValueCard
               value={state.values[0]}
@@ -137,27 +146,18 @@ export default function ComparisonTest() {
         </Grid>
       </Grid>
       <Grid item xs={12} zeroMinWidth>
-        <Grid container spacing={2}>
-          <Grid item xs={6} sm={6} textAlign="end" zeroMinWidth>
-            <Button
-              variant="outlined"
-              color="primary"
+        <Grid container sx={{ paddingX: "2dvw" }}>
+          <Grid item xs={12} textAlign="center" zeroMinWidth>
+            <UndoButton
+              fullWidth
+              variant="contained"
+              color="secondary"
               startIcon={<Undo />}
               onClick={undo}
               disabled={!canUndo}
             >
               Undo
-            </Button>
-          </Grid>
-          <Grid item xs={6} sm={6} textAlign="start" zeroMinWidth>
-            <Button
-              variant="outlined"
-              color="secondary"
-              startIcon={<Clear />}
-              onClick={() => navigate("/")}
-            >
-              Restart Test
-            </Button>
+            </UndoButton>
           </Grid>
         </Grid>
       </Grid>

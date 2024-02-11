@@ -9,7 +9,6 @@ export default function Layout(props) {
         style={{
           height: "calc(100% - var(--header-height))",
           width: "100%",
-          padding: "1%",
           position: "fixed",
         }}
       >

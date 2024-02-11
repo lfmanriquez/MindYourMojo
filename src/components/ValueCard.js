@@ -11,13 +11,13 @@ const VCard = styled(Card)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-width: 20vw;
-  height: 22vh;
+  min-width: 20dvw;
+  height: 22dvh;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px 3px;
 
   @media screen and (min-width: 1500px) {
-    min-width: 20vw;
-    max-height: 15vh;
+    min-width: 20dvw;
+    max-height: 15dvh;
   }
 
   @media screen and (max-width: 350px);
@@ -33,7 +33,7 @@ const VCard = styled(Card)`
 const Header = styled(Typography)`
   text-transform: uppercase;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 2dvh;
 `;
 
 export default function ValueCard(props) {
@@ -51,7 +51,9 @@ export default function ValueCard(props) {
           <Header>{value?.name}</Header>
         </Grid>
         <Grid item xs={12} zeroMinWidth>
-          <Typography variant="body1">{value?.exerpt}</Typography>
+          <Typography variant fontSize={"2dvh"}>
+            {value?.exerpt}
+          </Typography>
         </Grid>
         {hasDetails && (
           <Grid

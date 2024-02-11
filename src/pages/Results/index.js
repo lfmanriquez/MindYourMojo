@@ -11,6 +11,14 @@ import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import { ExpandCircleDown } from "@mui/icons-material";
 
+const HeaderGrid = styled(Grid)`
+  z-index: 9999;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 4px 2px -2px;
+  text-align: center;
+  align-items: center;
+  display: grid;
+`;
+
 const CustomAccordion = styled(Accordion)`
   border: none;
   box-shadow: none;
@@ -32,25 +40,23 @@ export default function Results() {
   }, []);
 
   return (
-    <Grid
-      container
-      spacing={4}
-      textAlign="center"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Grid item xs={12}>
+    <Grid container sx={{ height: "inherit", position: "fixed" }}>
+      <HeaderGrid item xs={12}>
         <Typography variant="h4" color="secondary" fontWeight="bold">
           My Top 5 Values
         </Typography>
-      </Grid>
-      <Grid item xs={12}>
+      </HeaderGrid>
+      <Grid
+        item
+        xs={12}
+        sx={{ height: "80%", margin: "0 5%", overflowY: "auto" }}
+      >
         {topValues?.map((t, index) => (
           <Slide
             direction="left"
             in={topValues.length > 0}
-            timeout={{ enter: 500, exit: 250 }}
-            style={{ transitionDelay: `${index * 250}ms` }}
+            timeout={{ enter: 500, exit: 500 }}
+            style={{ transitionDelay: `${index * 500}ms` }}
             key={`asi-${t.id}-${index}`}
           >
             <CustomAccordion>

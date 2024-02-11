@@ -25,7 +25,7 @@ import {
 import MindYourMojoLogo from "./mindyourmojo.png";
 
 const NavButton = styled(Button)`
-  height: 100%;
+  height: 50%;
   cursor: pointer;
   color: ${(props) => props.theme.palette.secondary.main};
   &:hover {
@@ -35,7 +35,7 @@ const NavButton = styled(Button)`
 `;
 
 const NavBar = styled(AppBar)`
-  height: 10vh;
+  height: 10dvh;
   flex: 1;
   align-self: flex-start;
   display: flex;
@@ -52,6 +52,11 @@ const SideNav = styled(Drawer)`
     background-color: ${(props) => props.theme.palette.primary.main};
     color: ${(props) => props.theme.palette.secondary.main};
   }
+`;
+
+const LogoButton = styled(Button)`
+  min-height: 100%;
+  height: 100%;
 `;
 
 const MenuButton = styled(IconButton)`
@@ -107,13 +112,9 @@ export default function NavigationBar() {
           sx={{ height: "100%" }}
           zeroMinWidth
         >
-          <Button
-            sx={{ minHeight: "100%", height: "100%" }}
-            color="secondary"
-            onClick={() => handleRouteChange("/")}
-          >
+          <LogoButton color="secondary" onClick={() => handleRouteChange("/")}>
             <img src={MindYourMojoLogo} width={160} />
-          </Button>
+          </LogoButton>
         </Grid>
         <Grid item xs={8} textAlign="end" sx={{ height: "100%" }}>
           <Box
