@@ -1,6 +1,7 @@
 import { Button, Fade, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
 import styled from "@emotion/styled";
+import MojoCarousel from "../../components/MojoCarousel";
 
 const BeginButton = styled(Button)`
   background-color: ${(props) => props.theme.palette.primary.main};
@@ -14,8 +15,15 @@ const BeginButton = styled(Button)`
 `;
 
 const MainGrid = styled(Grid)`
-  @media screen and (min-width: 600px) {
-    margin: 0 30%;
+  @media only screen and (min-device-width: 390px) {
+    margin: 0 5%;
+  }
+  @media only screen and (min-device-width: 640px) {
+    margin: 0 15%;
+  }
+
+  @media only screen and (min-device-width: 768px) {
+    margin: 0 20%;
   }
 `;
 
@@ -25,27 +33,18 @@ export default function LandingPage() {
     <Fade
       in
       timeout={{ enter: 500, exit: 300 }}
-      style={{ transitionDelay: `300ms`, height: "60vh" }}
+      style={{ transitionDelay: `300ms`, height: "100%" }}
     >
       <Grid
         container
-        spacing={0}
+        spacing={4}
         alignItems="center"
         justifyContent="center"
         sx={{ flexGrow: 1 }}
       >
-        <MainGrid item xs={12} zeroMinWidth>
+        <MojoCarousel />
+        <MainGrid item xs={12} zeroMinWidth sx={{ marginTop: "-55%" }}>
           <Grid container spacing={2} textAlign="center">
-            <Grid item xs={12}>
-              <Typography fontWeight="bold" color="secondary" variant="h4">
-                Values DigiQuiz
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant="body1">
-                Discover what matters most to you.
-              </Typography>
-            </Grid>
             <Grid item xs={12}>
               <BeginButton
                 color="primary"
