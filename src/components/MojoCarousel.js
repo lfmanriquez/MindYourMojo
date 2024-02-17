@@ -2,8 +2,6 @@ import styled from "@emotion/styled";
 import { CardMedia, Grid, Paper, Typography } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import MindYourMojoDemo from "./MindYourMojoDemo.mp4";
-import MobileMindYourMojo from "./MOBILE-MindYourMojo.mp4";
-import { isMobile } from "react-device-detect";
 
 const CarouselGrid = styled(Grid)`
   margin: 0 5%;
@@ -14,15 +12,7 @@ export default function MojoCarousel() {
     {
       name: "Values DigiQuiz",
       description: "Discover what matters most to you.",
-      content: isMobile ? (
-        <CardMedia
-          sx={{ height: "-webkit-fill-available" }}
-          component="video"
-          image={MobileMindYourMojo}
-          autoPlay
-          muted
-        />
-      ) : (
+      content: (
         <CardMedia
           sx={{ height: "-webkit-fill-available" }}
           component="video"
