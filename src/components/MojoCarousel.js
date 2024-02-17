@@ -19,6 +19,8 @@ export default function MojoCarousel() {
           image={MindYourMojoDemo}
           autoPlay
           muted
+          loop
+          playsInline
         />
       ),
     },
