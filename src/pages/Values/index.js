@@ -4,7 +4,7 @@ import personalValues from "../../app-data/personal-values";
 import styled from "@emotion/styled";
 
 const HeaderGrid = styled(Grid)`
-  z-index: 9999;
+  z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.15) 0 4px 2px -2px;
 `;
 

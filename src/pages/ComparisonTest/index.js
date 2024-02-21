@@ -94,6 +94,7 @@ export default function ComparisonTest() {
   return (
     <Grid
       container
+      spacing={1}
       textAlign="center"
       alignItems="center"
       sx={{
@@ -110,7 +111,7 @@ export default function ComparisonTest() {
               variant
               color="secondary"
               fontWeight="bolder"
-              fontSize={"4dvh"}
+              fontSize={"3dvh"}
             >
               Select the value most important to you.
             </Typography>
@@ -128,6 +129,7 @@ export default function ComparisonTest() {
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={12} sm={5} zeroMinWidth>
             <ValueCard
+              onComparisonTest
               value={state.values[0]}
               handleCardClick={() => addVote(state.values[0], state.values[1])}
             />
@@ -146,7 +148,7 @@ export default function ComparisonTest() {
         </Grid>
       </Grid>
       <Grid item xs={12} zeroMinWidth>
-        <Grid container sx={{ paddingX: "2dvw" }}>
+        <Grid container sx={{ padding: "0 2%" }}>
           <Grid item xs={12} textAlign="center" zeroMinWidth>
             <UndoButton
               fullWidth

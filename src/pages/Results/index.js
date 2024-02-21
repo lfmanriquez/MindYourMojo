@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { ExpandCircleDown } from "@mui/icons-material";
 
 const HeaderGrid = styled(Grid)`
-  z-index: 9999;
+  z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.15) 0 4px 2px -2px;
   text-align: center;
   align-items: center;

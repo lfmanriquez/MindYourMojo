@@ -43,8 +43,8 @@ export default function LandingPage() {
         sx={{ flexGrow: 1 }}
       >
         <MojoCarousel />
-        <MainGrid item xs={12} zeroMinWidth sx={{ marginTop: "-55%" }}>
-          <Grid container spacing={2} textAlign="center">
+        <MainGrid item xs={12} zeroMinWidth>
+          <Grid container textAlign="center">
             <Grid item xs={12}>
               <BeginButton
                 color="primary"

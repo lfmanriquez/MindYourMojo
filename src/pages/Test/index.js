@@ -7,13 +7,14 @@ import { useNavigate } from "react-router";
 
 const TestDrawer = styled(Drawer)`
   .MuiPaper-root {
-    height: 15%;
+    height: 8%;
     padding: 1dvh;
+    bottom: 10%;
   }
 `;
 
 const HeaderGrid = styled(Grid)`
-  z-index: 9999;
+  z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.15) 0 4px 2px -2px;
 `;
 
@@ -75,37 +76,36 @@ export default function PersonalValuesTest(props) {
             setChosenValues={setChosenValues}
           />
         </Grid>
+        <TestDrawer anchor="bottom" variant="persistent" open={isTestPage}>
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="center"
+            textAlign="center"
+            sx={{ height: "100%" }}
+          >
+            <Grid item xs={6} sm={6}>
+              <Typography variant fontWeight="bolder">
+                Selected Values: {chosenValues?.length}
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={6}>
+              <ContinueButton
+                variant="contained"
+                fullWidth
+                disabled={chosenValues?.length !== 10}
+                onClick={() =>
+                  navigate("/comparison-test", { state: chosenValues })
+                }
+              >
+                {chosenValues?.length === 10
+                  ? "Continue"
+                  : `Select ${10 - chosenValues?.length} more`}
+              </ContinueButton>
+            </Grid>
+          </Grid>
+        </TestDrawer>
       </Grid>
-      <TestDrawer anchor="bottom" variant="persistent" open={isTestPage}>
-        <Grid
-          container
-          spacing={2}
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
-          sx={{ height: "100%" }}
-        >
-          <Grid item xs={12} sm={6}>
-            <Typography variant fontWeight="bolder">
-              Selected Values: {chosenValues?.length}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <ContinueButton
-              variant="contained"
-              fullWidth
-              disabled={chosenValues?.length !== 10}
-              onClick={() =>
-                navigate("/comparison-test", { state: chosenValues })
-              }
-            >
-              {chosenValues?.length === 10
-                ? "Continue"
-                : `Select ${10 - chosenValues?.length} more`}
-            </ContinueButton>
-          </Grid>
-        </Grid>
-      </TestDrawer>
     </>
   );
 }

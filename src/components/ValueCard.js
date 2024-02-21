@@ -12,7 +12,7 @@ const VCard = styled(Card)`
   flex-direction: column;
   justify-content: space-between;
   min-width: 20dvw;
-  height: 22dvh;
+  height: ${(props) => (props.onComparisonTest ? "20dvh" : "22dvh")};
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px 3px;
 
   @media screen and (min-width: 1500px) {
@@ -37,14 +37,21 @@ const Header = styled(Typography)`
 `;
 
 export default function ValueCard(props) {
-  const { value, selected, handleCardClick, handleOpenCard, hasDetails } =
-    props;
+  const {
+    value,
+    selected,
+    handleCardClick,
+    handleOpenCard,
+    hasDetails,
+    onComparisonTest,
+  } = props;
 
   return (
     <VCard
       key={value}
       selected={selected}
       onClick={(e) => handleCardClick(e, value)}
+      onComparisonTest={onComparisonTest}
     >
       <Grid container sx={{ height: "100%" }}>
         <Grid item xs={12} zeroMinWidth>

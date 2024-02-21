@@ -35,7 +35,7 @@ const NavButton = styled(Button)`
 `;
 
 const NavBar = styled(AppBar)`
-  height: 10dvh;
+  height: var(--header-height);
   flex: 1;
   align-self: flex-start;
   display: flex;
@@ -44,6 +44,7 @@ const NavBar = styled(AppBar)`
   background-color: ${(props) => props.theme.palette.primary.main};
   position: sticky;
   top: 0;
+  z-index: 1100;
   color: ${(props) => props.theme.palette.secondary.main};
 `;
 

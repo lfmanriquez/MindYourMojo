@@ -4,7 +4,8 @@ import Carousel from "react-material-ui-carousel";
 import MindYourMojoDemo from "./MindYourMojoDemo.mp4";
 
 const CarouselGrid = styled(Grid)`
-  margin: 0 5%;
+  width: 100%;
+  height: 90%;
 `;
 
 export default function MojoCarousel() {
@@ -14,7 +15,7 @@ export default function MojoCarousel() {
       description: "Discover what matters most to you.",
       content: (
         <CardMedia
-          sx={{ height: "-webkit-fill-available" }}
+          sx={{ height: "100%", padding: "1%", borderRadius: "10px" }}
           component="video"
           image={MindYourMojoDemo}
           autoPlay
@@ -30,10 +31,11 @@ export default function MojoCarousel() {
     <>
       <CarouselGrid item xs={12} textAlign="center" zeroMinWidth>
         <Carousel
-          height={"50dvh"}
+          height={"100%"}
           sx={{
             backgroundColor: "secondary.main",
             borderRadius: "10px",
+            height: "100%",
           }}
           animation="slide"
           autoPlay={false}
