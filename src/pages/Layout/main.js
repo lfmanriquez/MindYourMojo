@@ -8,9 +8,8 @@ export default function Layout(props) {
       <NavigationBar />
       <main
         style={{
-          height: "calc(100% - var(--header-height) - var(--footer-height))",
+          height: "100dvh",
           width: "100%",
-          position: "fixed",
         }}
       >
         {children}
