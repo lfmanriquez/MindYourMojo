@@ -4,12 +4,11 @@ import { useState } from "react";
 import personalValues from "../../app-data/personal-values";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router";
+import { isMobile } from "react-device-detect";
 
 const TestDrawer = styled(Drawer)`
-  .MuiPaper-root {
-    height: 8%;
-    padding: 1dvh;
-    bottom: 10%;
+  & .MuiDrawer-paper {
+    height: var(--footer-height);
   }
 `;
 
@@ -35,39 +34,25 @@ export default function PersonalValuesTest(props) {
 
   return (
     <>
-      <Grid
-        container
-        sx={{
-          flexGrow: 1,
-          height: "calc(100% - 25dvh)",
-          position: "fixed",
-          paddingBottom: "2vh",
-        }}
-      >
-        <HeaderGrid item xs={12} zeroMinWidth>
-          <Grid container textAlign="center" sx={{ paddingX: "2dvw" }}>
-            <Grid item xs={12} zeroMinWidth>
-              <Typography
-                variant
-                color="secondary"
-                fontWeight="bolder"
-                fontSize={"4dvh"}
-              >
-                Identify values that matter most to you.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} zeroMinWidth>
-              <Typography variant fontSize={"2dvh"}>
-                Please select ten values from the sixty-two boxes below.
-              </Typography>
-            </Grid>
-          </Grid>
+      <Grid container spacing={1}>
+        <HeaderGrid
+          item
+          xs={12}
+          sx={{ paddingX: "2dvw" }}
+          textAlign="center"
+          alignItems="center"
+        >
+          <Typography variant="h6" color="secondary" fontWeight="bolder">
+            Identify values that matter most to you.
+          </Typography>
+          <Typography variant="subtitle2">
+            Please select ten values from the sixty-two boxes below.
+          </Typography>
         </HeaderGrid>
         <Grid
           item
-          xs={12}
-          zeroMinWidth
-          sx={{ overflowY: "auto", height: "80%" }}
+          xs
+          sx={{ overflowY: "auto", height: isMobile ? "65dvh" : "70dvh" }}
         >
           <PersonalValueCards
             values={values}
@@ -76,13 +61,13 @@ export default function PersonalValuesTest(props) {
             setChosenValues={setChosenValues}
           />
         </Grid>
-        <TestDrawer anchor="bottom" variant="persistent" open={isTestPage}>
+        <TestDrawer variant="permanent" anchor="bottom" open={isTestPage}>
           <Grid
             container
             alignItems="center"
             justifyContent="center"
             textAlign="center"
-            sx={{ height: "100%" }}
+            sx={{ height: "inherit" }}
           >
             <Grid item xs={6} sm={6}>
               <Typography variant fontWeight="bolder">

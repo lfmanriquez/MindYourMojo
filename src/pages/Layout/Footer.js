@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { useLocation } from "react-router";
 
 const MojoFooter = styled(Paper)`
-  visibility: ${(props) => props.visible && "hidden"};
+  display: ${(props) => props.visible && "none"};
   bottom: 0;
   background-color: ${(props) => props.theme.palette.primary.main};
   color: white;

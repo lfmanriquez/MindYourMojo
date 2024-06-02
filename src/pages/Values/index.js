@@ -17,8 +17,6 @@ export default function Values() {
       sx={{
         flexGrow: 1,
         height: "inherit",
-        paddingBottom: "2vh",
-        position: "fixed",
       }}
     >
       <HeaderGrid item xs={12} zeroMinWidth>
