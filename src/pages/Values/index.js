@@ -4,8 +4,11 @@ import personalValues from "../../app-data/personal-values";
 import styled from "@emotion/styled";
 
 const HeaderGrid = styled(Grid)`
+  background-color: white;
   z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.15) 0 4px 2px -2px;
+  position: sticky;
+  top: 0;
 `;
 
 export default function Values() {
@@ -13,13 +16,13 @@ export default function Values() {
   return (
     <Grid
       container
-      spacing={4}
+      spacing={1}
       sx={{
-        flexGrow: 1,
-        height: "inherit",
+        height: "100%",
+        overflow: "auto",
       }}
     >
-      <HeaderGrid item xs={12} zeroMinWidth>
+      <HeaderGrid item xs={12} sx={{ paddingX: "2dvw" }}>
         <Grid container textAlign="center">
           <Grid item xs={12} zeroMinWidth>
             <Typography
@@ -41,7 +44,7 @@ export default function Values() {
           </Grid>
         </Grid>
       </HeaderGrid>
-      <Grid item xs={12} zeroMinWidth sx={{ overflowY: "auto", height: "70%" }}>
+      <Grid item xs={12}>
         <PersonalValueCards values={values} />
       </Grid>
     </Grid>

@@ -10,6 +10,7 @@ import {
   List,
   ListItem,
   Stack,
+  Toolbar,
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -46,6 +47,12 @@ const NavBar = styled(AppBar)`
   top: 0;
   z-index: 1100;
   color: ${(props) => props.theme.palette.secondary.main};
+
+  .MuiToolbar-root {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
 `;
 
 const SideNav = styled(Drawer)`
@@ -105,86 +112,91 @@ export default function NavigationBar() {
 
   return (
     <NavBar>
-      <Grid container alignItems="center" sx={{ height: "100%" }}>
-        <Grid
-          item
-          xs={4}
-          textAlign="start"
-          sx={{ height: "100%" }}
-          zeroMinWidth
-        >
-          <LogoButton color="secondary" onClick={() => handleRouteChange("/")}>
-            <img src={MindYourMojoLogo} width={160} />
-          </LogoButton>
-        </Grid>
-        <Grid item xs={8} textAlign="end" sx={{ height: "100%" }}>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "block", sm: "none" },
-              height: "100%",
-            }}
+      <Toolbar>
+        <Grid container alignItems="center" sx={{ height: "100%" }}>
+          <Grid
+            item
+            xs={4}
+            textAlign="start"
+            sx={{ height: "100%" }}
+            zeroMinWidth
           >
-            <MenuButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
+            <LogoButton
+              color="secondary"
+              onClick={() => handleRouteChange("/")}
             >
-              <MenuIcon sx={{ width: "100%", height: "100%" }} />
-            </MenuButton>
-            <SideNav
-              anchor="right"
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+              <img src={MindYourMojoLogo} width={160} />
+            </LogoButton>
+          </Grid>
+          <Grid item xs={8} textAlign="end" sx={{ height: "100%" }}>
+            <Box
               sx={{
+                flexGrow: 1,
                 display: { xs: "block", sm: "none" },
+                height: "100%",
               }}
             >
-              <List>
-                <ListItem>
-                  <Button color="secondary" startIcon={<AccountCircle />}>
-                    <Typography textAlign="center">Profile</Typography>
-                  </Button>
-                </ListItem>
-                <Divider sx={{ backgroundColor: "white" }} variant="middle" />
-                {pages.map((page) => (
-                  <ListItem key={page.id}>
-                    <Button
-                      style={{ cursor: "pointer" }}
-                      startIcon={page.icon}
-                      color="secondary"
-                      onClick={() => handleRouteChange(page.route)}
-                    >
-                      <Typography textAlign="center">{page.name}</Typography>
+              <MenuButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon sx={{ width: "100%", height: "100%" }} />
+              </MenuButton>
+              <SideNav
+                anchor="right"
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", sm: "none" },
+                }}
+              >
+                <List>
+                  <ListItem>
+                    <Button color="secondary" startIcon={<AccountCircle />}>
+                      <Typography textAlign="center">Profile</Typography>
                     </Button>
                   </ListItem>
+                  <Divider sx={{ backgroundColor: "white" }} variant="middle" />
+                  {pages.map((page) => (
+                    <ListItem key={page.id}>
+                      <Button
+                        style={{ cursor: "pointer" }}
+                        startIcon={page.icon}
+                        color="secondary"
+                        onClick={() => handleRouteChange(page.route)}
+                      >
+                        <Typography textAlign="center">{page.name}</Typography>
+                      </Button>
+                    </ListItem>
+                  ))}
+                </List>
+              </SideNav>
+            </Box>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", sm: "flex" },
+                height: "100%",
+              }}
+            >
+              <Stack direction="row" spacing={1} alignItems="center">
+                {pages.map((page) => (
+                  <NavButton
+                    key={page.id}
+                    onClick={() => handleRouteChange(page.route)}
+                  >
+                    <Typography variant="h6">{page.name}</Typography>
+                  </NavButton>
                 ))}
-              </List>
-            </SideNav>
-          </Box>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", sm: "flex" },
-              height: "100%",
-            }}
-          >
-            <Stack direction="row" spacing={1} alignItems="center">
-              {pages.map((page) => (
-                <NavButton
-                  key={page.id}
-                  onClick={() => handleRouteChange(page.route)}
-                >
-                  <Typography variant="h6">{page.name}</Typography>
-                </NavButton>
-              ))}
-            </Stack>
-          </Box>
+              </Stack>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      </Toolbar>
     </NavBar>
   );
 }

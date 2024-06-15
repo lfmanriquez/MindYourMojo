@@ -4,7 +4,6 @@ import { useState } from "react";
 import personalValues from "../../app-data/personal-values";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router";
-import { isMobile } from "react-device-detect";
 
 const TestDrawer = styled(Drawer)`
   & .MuiDrawer-paper {
@@ -13,8 +12,11 @@ const TestDrawer = styled(Drawer)`
 `;
 
 const HeaderGrid = styled(Grid)`
+  background-color: white;
   z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.15) 0 4px 2px -2px;
+  position: sticky;
+  top: 0;
 `;
 
 const ContinueButton = styled(Button)`
@@ -26,7 +28,7 @@ const ContinueButton = styled(Button)`
   }
 `;
 
-export default function PersonalValuesTest(props) {
+export default function PersonalValuesTest() {
   const navigate = useNavigate();
   const values = personalValues;
   const isTestPage = true;
@@ -34,7 +36,11 @@ export default function PersonalValuesTest(props) {
 
   return (
     <>
-      <Grid container spacing={1}>
+      <Grid
+        container
+        spacing={1}
+        sx={{ height: "calc(100% - var(--footer-height))", overflow: "auto" }}
+      >
         <HeaderGrid
           item
           xs={12}
@@ -49,11 +55,7 @@ export default function PersonalValuesTest(props) {
             Please select ten values from the sixty-two boxes below.
           </Typography>
         </HeaderGrid>
-        <Grid
-          item
-          xs
-          sx={{ overflowY: "auto", height: isMobile ? "65dvh" : "70dvh" }}
-        >
+        <Grid item xs>
           <PersonalValueCards
             values={values}
             isTestPage
@@ -61,36 +63,36 @@ export default function PersonalValuesTest(props) {
             setChosenValues={setChosenValues}
           />
         </Grid>
-        <TestDrawer variant="permanent" anchor="bottom" open={isTestPage}>
-          <Grid
-            container
-            alignItems="center"
-            justifyContent="center"
-            textAlign="center"
-            sx={{ height: "inherit" }}
-          >
-            <Grid item xs={6} sm={6}>
-              <Typography variant fontWeight="bolder">
-                Selected Values: {chosenValues?.length}
-              </Typography>
-            </Grid>
-            <Grid item xs={6} sm={6}>
-              <ContinueButton
-                variant="contained"
-                fullWidth
-                disabled={chosenValues?.length !== 10}
-                onClick={() =>
-                  navigate("/comparison-test", { state: chosenValues })
-                }
-              >
-                {chosenValues?.length === 10
-                  ? "Continue"
-                  : `Select ${10 - chosenValues?.length} more`}
-              </ContinueButton>
-            </Grid>
-          </Grid>
-        </TestDrawer>
       </Grid>
+      <TestDrawer variant="permanent" anchor="bottom" open={isTestPage}>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          sx={{ height: "inherit", paddingX: "2%" }}
+        >
+          <Grid item xs={6} sm={6}>
+            <Typography variant fontWeight="bolder">
+              Selected Values: {chosenValues?.length}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} sm={6}>
+            <ContinueButton
+              variant="contained"
+              fullWidth
+              disabled={chosenValues?.length !== 10}
+              onClick={() =>
+                navigate("/comparison-test", { state: chosenValues })
+              }
+            >
+              {chosenValues?.length === 10
+                ? "Continue"
+                : `Select ${10 - chosenValues?.length} more`}
+            </ContinueButton>
+          </Grid>
+        </Grid>
+      </TestDrawer>
     </>
   );
 }

@@ -15,7 +15,6 @@ const HeaderGrid = styled(Grid)`
   z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.15) 0 4px 2px -2px;
   text-align: center;
-  align-items: center;
   display: grid;
 `;
 
@@ -40,8 +39,8 @@ export default function Results() {
   }, []);
 
   return (
-    <Grid container sx={{ height: "inherit", position: "fixed" }}>
-      <HeaderGrid item xs={12}>
+    <Grid container sx={{ height: "inherit" }}>
+      <HeaderGrid item xs={12} alignItems="center">
         <Typography variant="h4" color="secondary" fontWeight="bold">
           My Top 5 Values
         </Typography>

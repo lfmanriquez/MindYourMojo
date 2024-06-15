@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 import styled from "@emotion/styled";
 import MindYourMojoDemo from "./MindYourMojoDemo.mp4";
 import MobileMindYourMojoDemo from "./MOBILE-MindYourMojo.mp4";
-import { BrowserView, MobileView, isMobile } from "react-device-detect";
 
 const BeginButton = styled(Button)`
   background-color: ${(props) => props.theme.palette.primary.main};
@@ -24,8 +23,23 @@ const MainGrid = styled(Grid)`
   padding: 1%;
 `;
 
+const MobileCard = styled(Card)`
+  max-height: 60dvh;
+  max-width: 40dvw;
+  border-radius: 15px;
+  border: 4px solid ${(props) => props.theme.palette.primary.main};
+`;
+
+const BrowserCard = styled(Card)`
+  width: fit-content;
+  max-height: 50dvh;
+  border-radius: 15px;
+  border: 4px solid ${(props) => props.theme.palette.primary.main};
+`;
+
 export default function LandingPage() {
   const navigate = useNavigate();
+
   return (
     <Fade
       in
@@ -34,32 +48,33 @@ export default function LandingPage() {
     >
       <MainGrid
         container
-        spacing={isMobile ? 0 : 6}
-        alignItems={isMobile ? "start" : "center"}
+        spacing={{
+          xs: 0,
+          sm: 6,
+        }}
+        alignItems={{ xs: "start", sm: "center" }}
         justifyContent="center"
         textAlign="-webkit-center"
       >
-        <Grid
-          item
-          container
-          spacing={isMobile ? 4 : 1}
-          lg
-          sx={!isMobile && { marginRight: "1%" }}
-        >
-          <Grid item xs={12}>
-            <Typography variant="h3" color="primary.main">
-              Values DigiQuiz
-            </Typography>
-            <Typography variant="caption" color="primary.main">
-              Discover what matters most to you.
-            </Typography>
-          </Grid>
-          <Grid item xs>
-            <MobileView>
-              <Card sx={{ width: "50dvw" }}>
+        <Grid item sm={6}>
+          <Grid
+            container
+            spacing={{ xs: 4, sm: 1 }}
+            sx={{ marginRight: { xs: "1%" } }}
+          >
+            <Grid item xs={12}>
+              <Typography variant="h3" color="primary.main">
+                Values DigiQuiz
+              </Typography>
+              <Typography variant="caption" color="primary.main">
+                Discover what matters most to you.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sx={{ display: { sm: "none" } }}>
+              <MobileCard>
                 <CardMedia
                   sx={{
-                    height: "50dvh",
+                    height: "100%",
                   }}
                   component="video"
                   image={MobileMindYourMojoDemo}
@@ -68,38 +83,36 @@ export default function LandingPage() {
                   loop
                   playsInline
                 />
-              </Card>
-            </MobileView>
-          </Grid>
-          <Grid item xs={12}>
-            <BeginButton
-              fullWidth
-              color="primary"
-              variant="container"
-              size="large"
-              onClick={() => navigate("/test")}
-            >
-              <Typography variant="button">Begin Your DigiQuiz</Typography>
-            </BeginButton>
+              </MobileCard>
+            </Grid>
+            <Grid item xs={12}>
+              <BeginButton
+                fullWidth
+                color="primary"
+                variant="container"
+                size="large"
+                onClick={() => navigate("/test")}
+              >
+                <Typography variant="button">Begin Your DigiQuiz</Typography>
+              </BeginButton>
+            </Grid>
           </Grid>
         </Grid>
-        <BrowserView>
-          <Grid item lg>
-            <Card>
-              <CardMedia
-                sx={{
-                  height: "80dvh",
-                }}
-                component="video"
-                image={MindYourMojoDemo}
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </Card>
-          </Grid>
-        </BrowserView>
+        <Grid item sm={6} sx={{ display: { xs: "none", sm: "inline" } }}>
+          <BrowserCard>
+            <CardMedia
+              sx={{
+                height: "100%",
+              }}
+              component="video"
+              image={MindYourMojoDemo}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </BrowserCard>
+        </Grid>
       </MainGrid>
     </Fade>
   );

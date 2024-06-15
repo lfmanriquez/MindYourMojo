@@ -5,7 +5,12 @@ import { useLocation, useNavigate } from "react-router";
 import ValueCard from "../../components/ValueCard";
 import { Clear, Undo } from "@mui/icons-material";
 import { useHistoryState } from "@uidotdev/usehooks";
+import { isMobile } from "react-device-detect";
 
+const ContainerGrid = styled(Grid)`
+  height: inherit;
+  padding: ${isMobile && "2%"};
+`;
 const ProgressBar = styled.div`
   @media screen and (min-width: 600px) {
     transform: rotate(-90deg);
@@ -92,54 +97,39 @@ export default function ComparisonTest() {
   };
 
   return (
-    <Grid
+    <ContainerGrid
       container
-      spacing={1}
+      direction="column"
+      spacing={4}
       textAlign="center"
       alignItems="center"
-      sx={{
-        flexGrow: 1,
-        height: "inherit",
-        position: "fixed",
-        paddingBottom: "2dvh",
-      }}
     >
-      <Grid item xs={12} zeroMinWidth>
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography
-              variant
-              color="secondary"
-              fontWeight="bolder"
-              fontSize={"3dvh"}
-            >
-              Select the value most important to you.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} zeroMinWidth>
-            <Typography variant fontSize={"2dvh"}>
-              The blue indicator gauge in the center is similar to a fuel gauge.
-              It will continue to fill with gold until completely full of your
-              top 5 values. This will take approximately 25 selections.
-            </Typography>
-          </Grid>
-        </Grid>
+      <Grid item xs>
+        <Typography variant="h6" color="secondary" fontWeight="bolder">
+          Select the value most important to you.
+        </Typography>
+
+        <Typography variant="subtitle2">
+          The blue indicator gauge in the center is similar to a fuel gauge. It
+          will continue to fill with gold until completely full of your top 5
+          values. This will take approximately 25 selections.
+        </Typography>
       </Grid>
-      <Grid item xs={12} zeroMinWidth sx={{ margin: "0 5%" }}>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} sm={5} zeroMinWidth>
+      <Grid item xs>
+        <Grid container spacing={2} direction={isMobile ? "column" : "row"}>
+          <Grid item xs={12} sm={5}>
             <ValueCard
               onComparisonTest
               value={state.values[0]}
               handleCardClick={() => addVote(state.values[0], state.values[1])}
             />
           </Grid>
-          <Grid item xs={12} sm={2} zeroMinWidth>
+          <Grid item xs={12} sm={2}>
             <ProgressBar>
               <BorderLinearProgress variant="determinate" value={progress} />
             </ProgressBar>
           </Grid>
-          <Grid item xs={12} sm={5} zeroMinWidth>
+          <Grid item xs={12} sm={5}>
             <ValueCard
               value={state.values[1]}
               handleCardClick={() => addVote(state.values[1], state.values[0])}
@@ -147,22 +137,20 @@ export default function ComparisonTest() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} zeroMinWidth>
-        <Grid container sx={{ padding: "0 2%" }}>
-          <Grid item xs={12} textAlign="center" zeroMinWidth>
-            <UndoButton
-              fullWidth
-              variant="contained"
-              color="secondary"
-              startIcon={<Undo />}
-              onClick={undo}
-              disabled={!canUndo}
-            >
-              Undo
-            </UndoButton>
-          </Grid>
+      <Grid item xs width="100%">
+        <Grid item xs>
+          <UndoButton
+            fullWidth
+            variant="contained"
+            color="secondary"
+            startIcon={<Undo />}
+            onClick={undo}
+            disabled={!canUndo}
+          >
+            Undo
+          </UndoButton>
         </Grid>
       </Grid>
-    </Grid>
+    </ContainerGrid>
   );
 }

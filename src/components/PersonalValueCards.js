@@ -39,7 +39,7 @@ export default function PersonalValueCards(props) {
         sx={{ padding: "2dvh" }}
       >
         {values.map((v, index) => (
-          <Grid item xs={6} sm={6} md={4} zeroMinWidth>
+          <Grid item xs={6} sm={6} md={4}>
             <ValueCard
               key={index}
               value={v}
