@@ -32,6 +32,7 @@ export default function PersonalValuesTest() {
   const navigate = useNavigate();
   const values = personalValues;
   const isTestPage = true;
+
   const [chosenValues, setChosenValues] = useState([]);
 
   return (
@@ -55,7 +56,7 @@ export default function PersonalValuesTest() {
             Please select ten values from the sixty-two boxes below.
           </Typography>
         </HeaderGrid>
-        <Grid item xs>
+        <Grid item xs={12}>
           <PersonalValueCards
             values={values}
             isTestPage
@@ -73,7 +74,7 @@ export default function PersonalValuesTest() {
           sx={{ height: "inherit", paddingX: "2%" }}
         >
           <Grid item xs={6} sm={6}>
-            <Typography variant fontWeight="bolder">
+            <Typography variant="body1" fontWeight="bolder">
               Selected Values: {chosenValues?.length}
             </Typography>
           </Grid>

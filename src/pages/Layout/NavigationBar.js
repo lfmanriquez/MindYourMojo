@@ -75,18 +75,21 @@ const MenuButton = styled(IconButton)`
 export default function NavigationBar() {
   const navigate = useNavigate();
   const pages = [
-    { name: "Home", route: "/", icon: <Home /> },
+    { id: 0, name: "Home", route: "/", icon: <Home /> },
     {
+      id: 1,
       name: "QuizHub",
       route: "/test",
       icon: <Checklist />,
     },
     {
+      id: 2,
       name: "List of Values",
       route: "/values",
       icon: <ListAlt />,
     },
     {
+      id: 3,
       name: "About",
       route: "/about",
       icon: <Info />,

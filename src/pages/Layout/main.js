@@ -14,6 +14,7 @@ export default function Layout(props) {
         }}
       >
         {children}
+        <Toolbar sx={{ minHeight: "5% !important" }} />
         <Footer />
       </main>
     </>

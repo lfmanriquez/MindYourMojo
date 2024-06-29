@@ -15,8 +15,8 @@ const MojoFooter = styled(Paper)`
 
 const FooterImg = styled.img`
   max-width: 100%;
-  max-height: 10dvh;
-  border-radius: 3dvh;
+  max-height: 5dvh;
+  border-radius: 2dvh;
 `;
 
 export default function Footer() {
@@ -28,9 +28,7 @@ export default function Footer() {
           <FooterImg src={MardenMediaLogo} />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant fontSize={"2dvh"}>
-            © 2024 Marden Media, LLC
-          </Typography>
+          <Typography variant="caption">© 2024 Marden Media, LLC</Typography>
         </Grid>
       </Grid>
     </MojoFooter>

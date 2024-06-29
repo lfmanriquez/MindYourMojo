@@ -24,18 +24,13 @@ export default function Values() {
     >
       <HeaderGrid item xs={12} sx={{ paddingX: "2dvw" }}>
         <Grid container textAlign="center">
-          <Grid item xs={12} zeroMinWidth>
-            <Typography
-              variant
-              color="secondary"
-              fontWeight="bolder"
-              fontSize={"4dvh"}
-            >
+          <Grid item xs={12}>
+            <Typography variant="h6" color="secondary" fontWeight="bolder">
               Personal Values List
             </Typography>
           </Grid>
-          <Grid item xs={12} zeroMinWidth sx={{ margin: "0 1% 1% 1%" }}>
-            <Typography variant fontSize={"2dvh"}>
+          <Grid item xs={12} sx={{ margin: "0 1% 1% 1%" }}>
+            <Typography variant="subtitle2">
               Below is a compilation of the values used in the DigiQuiz, crafted
               from our exploration into fundamental human values. Each value is
               accompanied by a brief description or synonyms to provide a simple

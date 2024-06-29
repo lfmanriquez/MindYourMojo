@@ -20,19 +20,18 @@ const MainGrid = styled(Grid)`
     ${(props) => props.theme.palette.secondary.main},
     white
   );
-  padding: 1%;
 `;
 
 const MobileCard = styled(Card)`
-  max-height: 60dvh;
-  max-width: 40dvw;
+  height: fit-content;
+  width: fit-content;
   border-radius: 15px;
   border: 4px solid ${(props) => props.theme.palette.primary.main};
 `;
 
 const BrowserCard = styled(Card)`
   width: fit-content;
-  max-height: 50dvh;
+  max-height: 70dvh;
   border-radius: 15px;
   border: 4px solid ${(props) => props.theme.palette.primary.main};
 `;
@@ -44,46 +43,24 @@ export default function LandingPage() {
     <Fade
       in
       timeout={{ enter: 500, exit: 300 }}
-      sx={{ transitionDelay: `300ms`, height: "100%" }}
+      sx={{ transitionDelay: `300ms`, height: "100%", paddingX: "5%" }}
     >
       <MainGrid
         container
-        spacing={{
-          xs: 0,
-          sm: 6,
-        }}
-        alignItems={{ xs: "start", sm: "center" }}
+        spacing={2}
+        alignItems="center"
         justifyContent="center"
-        textAlign="-webkit-center"
+        textAlign="center"
       >
-        <Grid item sm={6}>
-          <Grid
-            container
-            spacing={{ xs: 4, sm: 1 }}
-            sx={{ marginRight: { xs: "1%" } }}
-          >
+        <Grid item xs={6}>
+          <Grid container spacing={1} alignItems="center">
             <Grid item xs={12}>
-              <Typography variant="h3" color="primary.main">
+              <Typography variant="h4" color="primary.main">
                 Values DigiQuiz
               </Typography>
               <Typography variant="caption" color="primary.main">
                 Discover what matters most to you.
               </Typography>
-            </Grid>
-            <Grid item xs={12} sx={{ display: { sm: "none" } }}>
-              <MobileCard>
-                <CardMedia
-                  sx={{
-                    height: "100%",
-                  }}
-                  component="video"
-                  image={MobileMindYourMojoDemo}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-              </MobileCard>
             </Grid>
             <Grid item xs={12}>
               <BeginButton
@@ -98,20 +75,37 @@ export default function LandingPage() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item sm={6} sx={{ display: { xs: "none", sm: "inline" } }}>
-          <BrowserCard>
-            <CardMedia
-              sx={{
-                height: "100%",
-              }}
-              component="video"
-              image={MindYourMojoDemo}
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          </BrowserCard>
+        <Grid item xs={6}>
+          <Grid item xs={6} sx={{ display: { xs: "inline", sm: "none" } }}>
+            <MobileCard>
+              <CardMedia
+                sx={{
+                  height: "100%",
+                }}
+                component="video"
+                image={MobileMindYourMojoDemo}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </MobileCard>
+          </Grid>
+          <Grid item sm={6} sx={{ display: { xs: "none", sm: "inline" } }}>
+            <BrowserCard>
+              <CardMedia
+                sx={{
+                  height: "100%",
+                }}
+                component="video"
+                image={MindYourMojoDemo}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </BrowserCard>
+          </Grid>
         </Grid>
       </MainGrid>
     </Fade>

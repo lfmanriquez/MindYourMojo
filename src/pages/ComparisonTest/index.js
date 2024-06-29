@@ -3,24 +3,34 @@ import { Button, Grid, LinearProgress, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import ValueCard from "../../components/ValueCard";
-import { Clear, Undo } from "@mui/icons-material";
+import { Undo } from "@mui/icons-material";
 import { useHistoryState } from "@uidotdev/usehooks";
-import { isMobile } from "react-device-detect";
 
 const ContainerGrid = styled(Grid)`
   height: inherit;
-  padding: ${isMobile && "2%"};
+  padding: 2%;
 `;
 const ProgressBar = styled.div`
-  @media screen and (min-width: 600px) {
-    transform: rotate(-90deg);
+  ${(props) => props.theme.breakpoints.up("sm")} {
+    text-align: -webkit-center;
+    height: 100%;
   }
 `;
 
 const BorderLinearProgress = styled(LinearProgress)`
+  ${(props) => props.theme.breakpoints.up("sm")} {
+    height: inherit;
+    width: 4px;
+    background-color: ${(props) => props.theme.palette.secondary.main};
+  }
   background-color: ${(props) => props.theme.palette.primary.main};
 
   & .MuiLinearProgress-bar1Determinate {
+    ${(props) => props.theme.breakpoints.up("sm")} {
+      background-color: ${(props) => props.theme.palette.primary.main};
+      transform: translateY(-${(props) => props.value}%) !important;
+    }
+
     background-color: ${(props) => props.theme.palette.secondary.main};
   }
 `;
@@ -32,7 +42,6 @@ const UndoButton = styled(Button)`
 export default function ComparisonTest() {
   const { state: chosenValues } = useLocation();
   const navigate = useNavigate();
-  // const [values, setValues] = useState([]);
   const [progress, setProgress] = useState(0);
   const { state, set, undo, canUndo } = useHistoryState({
     values: chosenValues,
@@ -97,14 +106,8 @@ export default function ComparisonTest() {
   };
 
   return (
-    <ContainerGrid
-      container
-      direction="column"
-      spacing={4}
-      textAlign="center"
-      alignItems="center"
-    >
-      <Grid item xs>
+    <ContainerGrid container spacing={0} textAlign="center" alignItems="center">
+      <Grid item xs={12}>
         <Typography variant="h6" color="secondary" fontWeight="bolder">
           Select the value most important to you.
         </Typography>
@@ -115,11 +118,10 @@ export default function ComparisonTest() {
           values. This will take approximately 25 selections.
         </Typography>
       </Grid>
-      <Grid item xs>
-        <Grid container spacing={2} direction={isMobile ? "column" : "row"}>
+      <Grid item xs={12}>
+        <Grid container spacing={2}>
           <Grid item xs={12} sm={5}>
             <ValueCard
-              onComparisonTest
               value={state.values[0]}
               handleCardClick={() => addVote(state.values[0], state.values[1])}
             />
@@ -137,19 +139,17 @@ export default function ComparisonTest() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs width="100%">
-        <Grid item xs>
-          <UndoButton
-            fullWidth
-            variant="contained"
-            color="secondary"
-            startIcon={<Undo />}
-            onClick={undo}
-            disabled={!canUndo}
-          >
-            Undo
-          </UndoButton>
-        </Grid>
+      <Grid item xs={12}>
+        <UndoButton
+          fullWidth
+          variant="contained"
+          color="secondary"
+          startIcon={<Undo />}
+          onClick={undo}
+          disabled={!canUndo}
+        >
+          Undo
+        </UndoButton>
       </Grid>
     </ContainerGrid>
   );

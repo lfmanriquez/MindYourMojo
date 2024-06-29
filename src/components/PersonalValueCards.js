@@ -39,9 +39,8 @@ export default function PersonalValueCards(props) {
         sx={{ padding: "2dvh" }}
       >
         {values.map((v, index) => (
-          <Grid item xs={6} sm={6} md={4}>
+          <Grid key={index} item xs={6} sm={6} md={4}>
             <ValueCard
-              key={index}
               value={v}
               selected={chosenValues?.includes(v)}
               handleCardClick={(e) => handleCardClick(e, v)}
