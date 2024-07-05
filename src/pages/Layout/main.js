@@ -11,6 +11,7 @@ export default function Layout(props) {
         style={{
           height: "calc(100dvh - var(--header-height))",
           width: "100%",
+          paddingTop: "1%",
         }}
       >
         {children}

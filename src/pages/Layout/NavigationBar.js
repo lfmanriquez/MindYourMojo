@@ -128,7 +128,7 @@ export default function NavigationBar() {
               color="secondary"
               onClick={() => handleRouteChange("/")}
             >
-              <img src={MindYourMojoLogo} width={160} />
+              <img src={MindYourMojoLogo} height={"100%"} width={"100%"} />
             </LogoButton>
           </Grid>
           <Grid item xs={8} textAlign="end" sx={{ height: "100%" }}>

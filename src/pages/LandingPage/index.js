@@ -53,11 +53,13 @@ export default function LandingPage() {
         textAlign="center"
       >
         <Grid item xs={6}>
-          <Grid container spacing={1} alignItems="center">
+          <Grid container spacing={2} alignItems="center">
             <Grid item xs={12}>
               <Typography variant="h4" color="primary.main">
                 Values DigiQuiz
               </Typography>
+            </Grid>
+            <Grid item xs={12}>
               <Typography variant="caption" color="primary.main">
                 Discover what matters most to you.
               </Typography>

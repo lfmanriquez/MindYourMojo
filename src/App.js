@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 import { appTheme } from "./themes/theme";
+import { About } from "./pages/About";
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
           <Route path="comparison-test" Component={ComparisonTest} />
           <Route exact path="values" Component={Values} />
           <Route exact path="results" Component={Results} />
+          <Route exact path="about" Component={About} />
         </Routes>
       </Layout>
     </ThemeProvider>
