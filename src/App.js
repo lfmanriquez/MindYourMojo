@@ -24,11 +24,11 @@ function App() {
       <Layout>
         <Routes>
           <Route exact path="/" Component={LandingPage} />
-          <Route exact path="test" Component={PersonalValuesTest} />
-          <Route path="comparison-test" Component={ComparisonTest} />
-          <Route exact path="values" Component={Values} />
-          <Route exact path="results" Component={Results} />
-          <Route exact path="about" Component={About} />
+          <Route exact path="/test" Component={PersonalValuesTest} />
+          <Route path="/comparison-test" Component={ComparisonTest} />
+          <Route exact path="/values" Component={Values} />
+          <Route exact path="/results" Component={Results} />
+          <Route exact path="/about" Component={About} />
         </Routes>
       </Layout>
     </ThemeProvider>
